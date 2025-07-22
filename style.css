@@ -1,0 +1,531 @@
+/* Giao diện ngang cho PC, dọc cho mobile, tông màu #00ffff + #eeeeee, font Orbitron/Oxanium/Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Oxanium:wght@400;700&family=Poppins:wght@400;700&display=swap');
+
+:root {
+    --main: #00ffff;
+    --text: #eeeeee;
+    --bg: #181a20;
+    --accent: #232526;
+    --shadow: 0 8px 32px rgba(0,255,255,0.12);
+}
+
+body {
+    background: linear-gradient(135deg, #181a20 0%, #232526 100%);
+    /* Overlay pattern nhẹ phía trên */
+    position: relative;
+}
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: url('https://www.transparenttextures.com/patterns/cubes.png') repeat;
+    opacity: 0.18; /* giảm opacity để không lấn át màu nền */
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    max-width: 900px;
+    background: var(--bg);
+    margin: 48px auto;
+    padding: 32px 28px;
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+    border: 2px solid var(--main);
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 1s;
+    gap: 32px;
+    z-index: 1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+.profile-left {
+    flex: 1 1 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 18px;
+    animation: fadeInUp 1s;
+}
+
+.avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--main);
+    box-shadow: 0 0 40px var(--main), 0 0 12px #232526;
+    background: var(--accent);
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+.avatar:hover {
+    transform: scale(1.08) rotate(-4deg);
+    box-shadow: 0 0 80px var(--main), 0 0 24px #232526;
+}
+
+/* Tiêu đề, tên, job title, nút: Orbitron/Oxanium */
+h1, h2, .project-title, .job-title, .job-title-btn, .cta-btn, .lang-btn, .goals-block h3, .interests-block h3 {
+    font-family: 'Orbitron', 'Oxanium', Arial, sans-serif;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+/* Nội dung, mô tả, danh sách: Poppins hoặc Roboto */
+body, .about p, .contact p, .project-desc, .goals-block ul, .interests-block ul, .days-block, .quote-block, .skills, .projects, .profile-right, .profile-left, .skill-bar span, .project-btn {
+    font-family: 'Poppins', 'Roboto', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+}
+
+/* Tăng độ đậm cho tiêu đề, giảm cho nội dung */
+h1, h2, .job-title, .job-title-btn, .cta-btn, .lang-btn {
+    font-weight: 700;
+}
+.about p, .contact p, .project-desc, .goals-block ul, .interests-block ul, .days-block, .quote-block {
+    font-weight: 400;
+}
+
+.social {
+    display: flex;
+    gap: 28px;
+    margin-top: 18px;
+    justify-content: center;
+}
+.social a {
+    color: var(--main);
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Orbitron', 'Oxanium', monospace;
+    transition: color 0.2s, transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    font-size: 2.1rem;
+    border-radius: 50%;
+    padding: 6px;
+}
+.social a:hover {
+    color: #232526;
+    background: var(--main);
+    box-shadow: 0 0 16px #00ffff88;
+    transform: scale(1.18);
+}
+
+.profile-right {
+    flex: 2 1 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.about, .skills, .contact, .projects {
+    background: var(--accent);
+    border-radius: 10px;
+    padding: 18px 18px;
+    box-shadow: 0 2px 12px #00ffff22;
+    position: relative;
+    transition: box-shadow 0.3s;
+    margin-bottom: 0;
+}
+
+.about:hover, .skills:hover, .contact:hover, .projects:hover {
+    box-shadow: 0 4px 24px #00ffff44;
+}
+
+h2 {
+    font-size: 1.18rem;
+    color: var(--main);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.about p, .contact p {
+    color: var(--text);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+.skill-bar {
+    margin-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.skill-bar span {
+    color: var(--main);
+    font-family: 'Oxanium', 'Orbitron', monospace;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+.bar {
+    background: #232526;
+    border-radius: 8px;
+    height: 12px;
+    margin-top: 4px;
+    box-shadow: 0 1px 6px #00ffff33;
+    overflow: hidden;
+}
+.progress {
+    background: linear-gradient(90deg, var(--main) 60%, #232526 100%);
+    height: 100%;
+    border-radius: 8px;
+    transition: width 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+.projects-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin: 0;
+    padding: 0;
+}
+.project-card {
+    background: var(--bg);
+    border-radius: 10px;
+    box-shadow: 0 2px 12px #00ffff22;
+    padding: 12px;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: box-shadow 0.3s, transform 0.3s;
+    overflow: hidden;
+    animation: fadeIn 1s;
+}
+.project-card:hover {
+    box-shadow: 0 4px 24px #00ffff44;
+    transform: translateY(-4px) scale(1.04);
+}
+.project-card:hover, .about:hover, .skills:hover, .contact:hover {
+    box-shadow: 0 0 24px #00ffff88;
+}
+.project-img {
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background: #232526;
+    transition: filter 0.3s;
+}
+.project-card:hover .project-img {
+    filter: brightness(1.2) drop-shadow(0 0 8px #00ffff88);
+}
+.project-title {
+    color: var(--main);
+    font-size: 1.05rem;
+    margin: 0 0 4px 0;
+    text-align: center;
+}
+
+.project-desc {
+    font-size: 0.95rem;
+    color: var(--text);
+    margin-bottom: 8px;
+    text-align: center;
+}
+.project-btn {
+    background: var(--main);
+    color: #232526;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 16px;
+    font-family: 'Oxanium', 'Orbitron', Arial, sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.project-btn:hover {
+    background: #232526;
+    color: var(--main);
+    transform: scale(1.08);
+}
+
+.contact a {
+    color: var(--main);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+    font-family: 'Oxanium', 'Orbitron', monospace;
+}
+.contact a:hover {
+    color: #232526;
+    text-decoration: underline;
+}
+
+.lang-switch {
+    position: fixed;
+    top: 24px;
+    left: 32px;
+    z-index: 99;
+    display: flex;
+    gap: 8px;
+    background: rgba(0,255,255,0.08);
+    border-radius: 24px;
+    box-shadow: 0 2px 12px #00ffff44;
+    padding: 6px 16px;
+    align-items: center;
+    transition: background 0.3s;
+}
+.lang-btn {
+    background: none;
+    border: none;
+    color: var(--main);
+    font-family: 'Orbitron', 'Oxanium', Arial, sans-serif;
+    font-size: 1.08rem;
+    font-weight: 700;
+    padding: 6px 18px;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+.lang-btn.active,
+.lang-btn:hover {
+    background: var(--main);
+    color: #232526;
+    box-shadow: 0 0 8px #00ffff88;
+}
+
+.quick-block {
+    width: 100%;
+    background: rgba(24, 26, 32, 0.85);
+    border-radius: 12px;
+    margin: 10px 0;
+    padding: 12px 16px;
+    box-shadow: 0 0 12px #00ffff33;
+    font-size: 0.98rem;
+    color: var(--text);
+    border: 1.5px solid #00ffff22;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+.quote-block {
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #00ffff;
+    border-left: 3px solid #00ffff88;
+    background: rgba(24, 26, 32, 0.95);
+}
+.goals-block h3, .interests-block h3 {
+    font-size: 1rem;
+    color: #00ffff;
+    margin: 0 0 4px 0;
+    font-family: 'Orbitron', 'Oxanium', Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.goals-block ul, .interests-block ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 0.95rem;
+}
+.cta-block {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.cta-btn {
+    background: var(--main);
+    color: #232526;
+    font-family: 'Orbitron', 'Oxanium', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 22px;
+    box-shadow: 0 0 8px #00ffff88;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.cta-btn:hover {
+    background: #232526;
+    color: var(--main);
+    box-shadow: 0 0 16px #00ffff99;
+}
+.days-block {
+    font-size: 0.95rem;
+    color: #00ffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: flex-start;
+    margin-top: 4px;
+}
+
+/* Job title button hiện đại, nổi bật, bo tròn, hiệu ứng gradient và glow */
+.job-title-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(90deg, #00ffff 0%, #00cccc 100%);
+    color: #232526;
+    font-family: 'Poppins', 'Roboto', Arial, sans-serif;
+    font-size: 1.08rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 24px;
+    padding: 12px 36px;
+    margin-bottom: 18px;
+    box-shadow: 0 0 16px #00ffff55, 0 2px 12px #00cccc33;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 6px #00ffff22;
+}
+.job-title-btn i {
+    font-size: 1.3rem;
+    margin-right: 6px;
+}
+.job-title-btn:hover {
+    background: linear-gradient(90deg, #00cccc 0%, #00ffff 100%);
+    color: #181a20;
+    box-shadow: 0 0 32px #00ffff99;
+    transform: scale(1.06);
+}
+
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        max-width: 98vw;
+        padding: 16px 4vw;
+        gap: 0;
+    }
+    .profile-left, .profile-right {
+        width: 100%;
+        flex: unset;
+    }
+    .projects-list {
+        justify-content: center;
+    }
+}
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.4rem;
+    }
+    .avatar {
+        width: 80px;
+        height: 80px;
+    }
+    .about, .skills, .contact, .projects {
+        padding: 10px 6px;
+    }
+    .job-title {
+        font-size: 1rem;
+    }
+    .project-card {
+        width: 100%;
+        min-width: 0;
+    }
+}
+
+body.light-mode {
+    background: linear-gradient(135deg, #f8fbff 0%, #e6f7ff 100%);
+    color: #232526;
+}
+body.light-mode .container {
+    background: #fff;
+    border-color: #00cccc;
+    box-shadow: 0 8px 32px rgba(0,204,204,0.08);
+}
+body.light-mode h1, 
+body.light-mode h2, 
+body.light-mode .job-title, 
+body.light-mode .project-title,
+body.light-mode .goals-block h3,
+body.light-mode .interests-block h3 {
+    color: #00cccc !important;
+    text-shadow: none;
+}
+body.light-mode .about, 
+body.light-mode .skills, 
+body.light-mode .contact, 
+body.light-mode .projects {
+    background: #f8fbff !important;
+    color: #232526 !important;
+    box-shadow: 0 2px 12px #00cccc22;
+    border: 1.5px solid #00cccc22;
+}
+body.light-mode .quick-block {
+    background: #e6f7ff !important;
+    color: #232526 !important;
+    box-shadow: 0 0 8px #00cccc22;
+    border: 1.5px solid #00cccc22;
+}
+body.light-mode .quote-block {
+    color: #00cccc !important;
+    background: #e6f7ff !important;
+    border-left: 3px solid #00cccc88;
+}
+body.light-mode .skill-bar span,
+body.light-mode .project-desc,
+body.light-mode .about p,
+body.light-mode .contact p {
+    color: #232526 !important;
+    font-family: 'Poppins', 'Roboto', Arial, sans-serif;
+}
+body.light-mode .bar {
+    background: #d1faff !important;
+}
+body.light-mode .progress {
+    background: linear-gradient(90deg, #00cccc 60%, #232526 100%) !important;
+}
+body.light-mode .project-card {
+    background: #f8ffff !important;
+    color: #232526 !important;
+    box-shadow: 0 2px 12px #00cccc22;
+}
+body.light-mode .project-btn {
+    background: #00cccc !important;
+    color: #fff !important;
+    font-family: 'Poppins', 'Roboto', Arial, sans-serif;
+}
+body.light-mode .social a,
+body.light-mode .contact a {
+    color: #00cccc !important;
+    font-family: 'Poppins', 'Roboto', Arial, sans-serif;
+}
+body.light-mode .social a:hover,
+body.light-mode .contact a:hover {
+    color: #232526 !important;
+}
+body.light-mode .lang-switch {
+    background: rgba(0,204,204,0.08);
+    box-shadow: 0 2px 12px #00cccc22;
+}
+body.light-mode .lang-btn {
+    background: none;
+    color: #00cccc;
+}
+body.light-mode .lang-btn.active,
+body.light-mode .lang-btn:hover {
+    background: #00cccc;
+    color: #fff;
+    box-shadow: 0 0 8px #00cccc88;
+}
