@@ -1,8 +1,9 @@
-/* Giao diện ngang cho PC, dọc cho mobile, tông màu #00ffff + #eeeeee, font Orbitron/Oxanium/Poppins */
+/* --- CLEANED & OPTIMIZED CSS FOR RESPONSIVE DESIGN --- */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Oxanium:wght@400;700&family=Poppins:wght@400;700&display=swap');
 
 :root {
     --main: #00ffff;
+    --main-light: #00cccc;
     --text: #eeeeee;
     --bg: #181a20;
     --accent: #232526;
@@ -10,9 +11,12 @@
 }
 
 body {
-    background: linear-gradient(135deg, #181a20 0%, #232526 100%);
-    /* Overlay pattern nhẹ phía trên */
+    background: linear-gradient(135deg, var(--bg) 0%, var(--accent) 100%);
+    min-height: 100vh;
+    margin: 0;
+    color: var(--text);
     position: relative;
+    font-family: 'Poppins', 'Roboto', Arial, sans-serif;
 }
 body::before {
     content: "";
@@ -21,10 +25,10 @@ body::before {
     z-index: 0;
     pointer-events: none;
     background: url('https://www.transparenttextures.com/patterns/cubes.png') repeat;
-    opacity: 0.18; /* giảm opacity để không lấn át màu nền */
+    opacity: 0.18;
 }
 
-.container {
+main.container {
     display: flex;
     flex-direction: row;
     max-width: 900px;
@@ -34,11 +38,11 @@ body::before {
     border-radius: 22px;
     box-shadow: var(--shadow);
     border: 2px solid var(--main);
+    gap: 32px;
+    z-index: 1;
     position: relative;
     overflow: hidden;
     animation: fadeIn 1s;
-    gap: 32px;
-    z-index: 1;
 }
 
 @keyframes fadeIn {
@@ -55,7 +59,6 @@ body::before {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
     gap: 18px;
     animation: fadeInUp 1s;
 }
@@ -66,36 +69,27 @@ body::before {
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid var(--main);
-    box-shadow: 0 0 40px var(--main), 0 0 12px #232526;
+    box-shadow: 0 0 40px var(--main), 0 0 12px var(--accent);
     background: var(--accent);
     transition: transform 0.4s, box-shadow 0.4s;
 }
 .avatar:hover {
     transform: scale(1.08) rotate(-4deg);
-    box-shadow: 0 0 80px var(--main), 0 0 24px #232526;
+    box-shadow: 0 0 80px var(--main), 0 0 24px var(--accent);
 }
 
-/* Tiêu đề, tên, job title, nút: Orbitron/Oxanium */
-h1, h2, .project-title, .job-title, .job-title-btn, .cta-btn, .lang-btn, .goals-block h3, .interests-block h3 {
+h1, h2, .project-title, .job-title-btn, .cta-btn, .lang-btn, .goals-block h3, .interests-block h3 {
     font-family: 'Orbitron', 'Oxanium', Arial, sans-serif;
     letter-spacing: 2px;
     font-weight: 700;
 }
 
-/* Nội dung, mô tả, danh sách: Poppins hoặc Roboto */
-body, .about p, .contact p, .project-desc, .goals-block ul, .interests-block ul, .days-block, .quote-block, .skills, .projects, .profile-right, .profile-left, .skill-bar span, .project-btn {
-    font-family: 'Poppins', 'Roboto', Arial, sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    letter-spacing: 0.2px;
-}
-
-/* Tăng độ đậm cho tiêu đề, giảm cho nội dung */
-h1, h2, .job-title, .job-title-btn, .cta-btn, .lang-btn {
-    font-weight: 700;
-}
-.about p, .contact p, .project-desc, .goals-block ul, .interests-block ul, .days-block, .quote-block {
-    font-weight: 400;
+h1 {
+    color: var(--main);
+    text-shadow: 0 2px 12px #00ffff44;
+    text-align: center;
+    font-size: 2.1rem;
+    margin: 18px 0 10px 0;
 }
 
 .social {
@@ -107,17 +101,15 @@ h1, h2, .job-title, .job-title-btn, .cta-btn, .lang-btn {
 .social a {
     color: var(--main);
     text-decoration: none;
-    font-weight: 700;
-    font-family: 'Orbitron', 'Oxanium', monospace;
-    transition: color 0.2s, transform 0.2s, box-shadow 0.2s;
-    display: flex;
-    align-items: center;
     font-size: 2.1rem;
     border-radius: 50%;
     padding: 6px;
+    transition: color 0.2s, transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
 }
 .social a:hover {
-    color: #232526;
+    color: var(--accent);
     background: var(--main);
     box-shadow: 0 0 16px #00ffff88;
     transform: scale(1.18);
@@ -135,28 +127,11 @@ h1, h2, .job-title, .job-title-btn, .cta-btn, .lang-btn {
     border-radius: 10px;
     padding: 18px 18px;
     box-shadow: 0 2px 12px #00ffff22;
-    position: relative;
-    transition: box-shadow 0.3s;
     margin-bottom: 0;
+    transition: box-shadow 0.3s;
 }
-
 .about:hover, .skills:hover, .contact:hover, .projects:hover {
     box-shadow: 0 4px 24px #00ffff44;
-}
-
-h2 {
-    font-size: 1.18rem;
-    color: var(--main);
-    margin-bottom: 10px;
-    font-weight: 700;
-}
-
-.about p, .contact p {
-    color: var(--text);
-    font-size: 1.05rem;
-    line-height: 1.6;
-    margin: 0;
-    font-family: 'Poppins', Arial, sans-serif;
 }
 
 .skill-bar {
@@ -175,7 +150,7 @@ h2 {
     font-weight: 500;
 }
 .bar {
-    background: #232526;
+    background: var(--accent);
     border-radius: 8px;
     height: 12px;
     margin-top: 4px;
@@ -183,7 +158,7 @@ h2 {
     overflow: hidden;
 }
 .progress {
-    background: linear-gradient(90deg, var(--main) 60%, #232526 100%);
+    background: linear-gradient(90deg, var(--main) 60%, var(--accent) 100%);
     height: 100%;
     border-radius: 8px;
     transition: width 0.7s cubic-bezier(.68,-0.55,.27,1.55);
@@ -195,6 +170,7 @@ h2 {
     gap: 18px;
     margin: 0;
     padding: 0;
+    justify-content: flex-start;
 }
 .project-card {
     background: var(--bg);
@@ -213,16 +189,13 @@ h2 {
     box-shadow: 0 4px 24px #00ffff44;
     transform: translateY(-4px) scale(1.04);
 }
-.project-card:hover, .about:hover, .skills:hover, .contact:hover {
-    box-shadow: 0 0 24px #00ffff88;
-}
 .project-img {
     width: 100%;
     height: 90px;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 8px;
-    background: #232526;
+    background: var(--accent);
     transition: filter 0.3s;
 }
 .project-card:hover .project-img {
@@ -234,7 +207,6 @@ h2 {
     margin: 0 0 4px 0;
     text-align: center;
 }
-
 .project-desc {
     font-size: 0.95rem;
     color: var(--text);
@@ -243,7 +215,7 @@ h2 {
 }
 .project-btn {
     background: var(--main);
-    color: #232526;
+    color: var(--accent);
     border: none;
     border-radius: 6px;
     padding: 6px 16px;
@@ -253,7 +225,7 @@ h2 {
     transition: background 0.2s, color 0.2s, transform 0.2s;
 }
 .project-btn:hover {
-    background: #232526;
+    background: var(--accent);
     color: var(--main);
     transform: scale(1.08);
 }
@@ -266,15 +238,11 @@ h2 {
     font-family: 'Oxanium', 'Orbitron', monospace;
 }
 .contact a:hover {
-    color: #232526;
+    color: var(--accent);
     text-decoration: underline;
 }
 
 .lang-switch {
-    position: fixed;
-    top: 24px;
-    left: 32px;
-    z-index: 99;
     display: flex;
     gap: 8px;
     background: rgba(0,255,255,0.08);
@@ -282,7 +250,7 @@ h2 {
     box-shadow: 0 2px 12px #00ffff44;
     padding: 6px 16px;
     align-items: center;
-    transition: background 0.3s;
+    margin-bottom: 18px;
 }
 .lang-btn {
     background: none;
@@ -300,8 +268,27 @@ h2 {
 .lang-btn.active,
 .lang-btn:hover {
     background: var(--main);
-    color: #232526;
+    color: var(--accent);
     box-shadow: 0 0 8px #00ffff88;
+}
+.lang-switch-fixed {
+    position: fixed;
+    top: 18px;
+    left: 24px;
+    z-index: 1000;
+    background: rgba(0,255,255,0.10);
+    border-radius: 20px;
+    box-shadow: 0 2px 12px #00ffff44;
+    padding: 4px 10px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+.lang-switch-fixed .lang-btn {
+    font-size: 1rem;
+    padding: 4px 12px;
+    border-radius: 14px;
+    min-width: 36px;
 }
 
 .quick-block {
@@ -322,17 +309,14 @@ h2 {
 .quote-block {
     font-style: italic;
     font-size: 0.95rem;
-    color: #00ffff;
+    color: var(--main);
     border-left: 3px solid #00ffff88;
     background: rgba(24, 26, 32, 0.95);
 }
 .goals-block h3, .interests-block h3 {
     font-size: 1rem;
-    color: #00ffff;
+    color: var(--main);
     margin: 0 0 4px 0;
-    font-family: 'Orbitron', 'Oxanium', Arial, sans-serif;
-    font-weight: 700;
-    letter-spacing: 1px;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -349,8 +333,7 @@ h2 {
 }
 .cta-btn {
     background: var(--main);
-    color: #232526;
-    font-family: 'Orbitron', 'Oxanium', Arial, sans-serif;
+    color: var(--accent);
     font-size: 1rem;
     font-weight: 700;
     border: none;
@@ -365,28 +348,25 @@ h2 {
     transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 .cta-btn:hover {
-    background: #232526;
+    background: var(--accent);
     color: var(--main);
     box-shadow: 0 0 16px #00ffff99;
 }
 .days-block {
     font-size: 0.95rem;
-    color: #00ffff;
+    color: var(--main);
     display: flex;
     align-items: center;
     gap: 8px;
-    justify-content: flex-start;
     margin-top: 4px;
 }
 
-/* Job title button hiện đại, nổi bật, bo tròn, hiệu ứng gradient và glow */
 .job-title-btn {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: linear-gradient(90deg, #00ffff 0%, #00cccc 100%);
-    color: #232526;
-    font-family: 'Poppins', 'Roboto', Arial, sans-serif;
+    background: linear-gradient(90deg, var(--main) 0%, var(--main-light) 100%);
+    color: var(--accent);
     font-size: 1.08rem;
     font-weight: 600;
     border: none;
@@ -404,14 +384,15 @@ h2 {
     margin-right: 6px;
 }
 .job-title-btn:hover {
-    background: linear-gradient(90deg, #00cccc 0%, #00ffff 100%);
-    color: #181a20;
+    background: linear-gradient(90deg, var(--main-light) 0%, var(--main) 100%);
+    color: var(--bg);
     box-shadow: 0 0 32px #00ffff99;
     transform: scale(1.06);
 }
 
+/* --- RESPONSIVE DESIGN --- */
 @media (max-width: 900px) {
-    .container {
+    main.container {
         flex-direction: column;
         max-width: 98vw;
         padding: 16px 4vw;
@@ -436,31 +417,40 @@ h2 {
     .about, .skills, .contact, .projects {
         padding: 10px 6px;
     }
-    .job-title {
+    .job-title-btn {
         font-size: 1rem;
+        padding: 10px 18px;
     }
     .project-card {
         width: 100%;
         min-width: 0;
     }
+    main.container {
+        padding: 8px 0;
+    }
+    .lang-switch-fixed {
+        top: 8px;
+        left: 8px;
+        padding: 2px 4px;
+    }
 }
 
+/* --- LIGHT MODE --- */
 body.light-mode {
     background: linear-gradient(135deg, #f8fbff 0%, #e6f7ff 100%);
-    color: #232526;
+    color: var(--accent);
 }
 body.light-mode .container {
     background: #fff;
-    border-color: #00cccc;
+    border-color: var(--main-light);
     box-shadow: 0 8px 32px rgba(0,204,204,0.08);
 }
 body.light-mode h1, 
 body.light-mode h2, 
-body.light-mode .job-title, 
 body.light-mode .project-title,
 body.light-mode .goals-block h3,
 body.light-mode .interests-block h3 {
-    color: #00cccc !important;
+    color: var(--main-light) !important;
     text-shadow: none;
 }
 body.light-mode .about, 
@@ -468,18 +458,18 @@ body.light-mode .skills,
 body.light-mode .contact, 
 body.light-mode .projects {
     background: #f8fbff !important;
-    color: #232526 !important;
+    color: var(--accent) !important;
     box-shadow: 0 2px 12px #00cccc22;
     border: 1.5px solid #00cccc22;
 }
 body.light-mode .quick-block {
     background: #e6f7ff !important;
-    color: #232526 !important;
+    color: var(--accent) !important;
     box-shadow: 0 0 8px #00cccc22;
     border: 1.5px solid #00cccc22;
 }
 body.light-mode .quote-block {
-    color: #00cccc !important;
+    color: var(--main-light) !important;
     background: #e6f7ff !important;
     border-left: 3px solid #00cccc88;
 }
@@ -487,33 +477,30 @@ body.light-mode .skill-bar span,
 body.light-mode .project-desc,
 body.light-mode .about p,
 body.light-mode .contact p {
-    color: #232526 !important;
-    font-family: 'Poppins', 'Roboto', Arial, sans-serif;
+    color: var(--accent) !important;
 }
 body.light-mode .bar {
     background: #d1faff !important;
 }
 body.light-mode .progress {
-    background: linear-gradient(90deg, #00cccc 60%, #232526 100%) !important;
+    background: linear-gradient(90deg, var(--main-light) 60%, var(--accent) 100%) !important;
 }
 body.light-mode .project-card {
     background: #f8ffff !important;
-    color: #232526 !important;
+    color: var(--accent) !important;
     box-shadow: 0 2px 12px #00cccc22;
 }
 body.light-mode .project-btn {
-    background: #00cccc !important;
+    background: var(--main-light) !important;
     color: #fff !important;
-    font-family: 'Poppins', 'Roboto', Arial, sans-serif;
 }
 body.light-mode .social a,
 body.light-mode .contact a {
-    color: #00cccc !important;
-    font-family: 'Poppins', 'Roboto', Arial, sans-serif;
+    color: var(--main-light) !important;
 }
 body.light-mode .social a:hover,
 body.light-mode .contact a:hover {
-    color: #232526 !important;
+    color: var(--accent) !important;
 }
 body.light-mode .lang-switch {
     background: rgba(0,204,204,0.08);
@@ -521,11 +508,11 @@ body.light-mode .lang-switch {
 }
 body.light-mode .lang-btn {
     background: none;
-    color: #00cccc;
+    color: var(--main-light);
 }
 body.light-mode .lang-btn.active,
 body.light-mode .lang-btn:hover {
-    background: #00cccc;
+    background: var(--main-light);
     color: #fff;
     box-shadow: 0 0 8px #00cccc88;
 }

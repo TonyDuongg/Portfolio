@@ -5,17 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome cho icon -->
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="lang-switch" style="position:fixed;top:24px;left:32px;z-index:99;">
-            <button id="lang-en" class="lang-btn" style="margin-right:8px;">EN</button>
-            <button id="lang-vi" class="lang-btn">VI</button>
-        </div>
-        <div class="profile-left">
+    <!-- Language Switcher -->
+    <div class="lang-switch lang-switch-fixed">
+        <button id="lang-en" class="lang-btn">EN</button>
+        <button id="lang-vi" class="lang-btn">VI</button>
+    </div>
+    <main class="container">
+        <!-- Profile Left -->
+        <aside class="profile-left">
             <img src="avatar.png" alt="Avatar" class="avatar">
             <h1 id="name">Nguyen Hai Duong</h1>
             <button class="job-title-btn" id="job-title-btn"><i class="fa-solid fa-gamepad"></i> Game Developer</button>
@@ -24,7 +26,7 @@
                 <a href="https://www.linkedin.com/in/tonyduongg" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
                 <a href="https://github.com/tonyduongg" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
             </div>
-
+            <!-- Quick Info Blocks -->
             <div class="quick-block quote-block">
                 <i class="fa-solid fa-quote-left"></i>
                 <span id="quick-quote" data-en="Dreams remain dreams unless you make them real." data-vi="Ước mơ vốn chỉ mãi là ước mơ nếu bạn không thực hiện nó">Dreams remain dreams unless you make them real.</span>
@@ -53,9 +55,10 @@
                 <span id="days-title">Days coding:</span>
                 <span id="days-count"></span>
             </div>
-        </div>
-        <div class="profile-right">
-            <div class="about">
+        </aside>
+        <!-- Profile Right -->
+        <section class="profile-right">
+            <section class="about">
                 <h2><i class="fa-solid fa-user"></i> <span id="about-title">About</span></h2>
                 <p id="about-content">
                     - I am a young game developer, learning and growing every day with a passion for creativity and technology.<br>
@@ -63,8 +66,8 @@
                     - Passionate about building products that bring exciting experiences to players.<br>
                     - Ready to collaborate and learn from the community and colleagues to develop myself.
                 </p>
-            </div>
-            <div class="skills">
+            </section>
+            <section class="skills">
                 <h2><i class="fa-solid fa-code"></i> <span id="skills-title">Skills</span></h2>
                 <div class="skill-bar">
                     <span><i class="fa-brands fa-unity"></i> <span class="skill-name" data-en="C# (Unity)" data-vi="C# (Unity)">C# (Unity)</span></span>
@@ -86,8 +89,8 @@
                     <span><i class="fa-solid fa-language"></i> <span class="skill-name" data-en="English for reading docs" data-vi="Tiếng Anh đọc hiểu tài liệu">English for reading docs</span></span>
                     <div class="bar"><div class="progress" style="width: 55%"></div></div>
                 </div>
-            </div>
-            <div class="projects" style="display:none;">
+            </section>
+            <section class="projects" style="display:none;">
                 <h2><i class="fa-solid fa-folder-open"></i> <span id="projects-title">Projects</span></h2>
                 <div class="projects-list">
                     <div class="project-card">
@@ -103,14 +106,14 @@
                         <a href="#" class="project-btn" data-en="View Project" data-vi="Xem dự án">View Project</a>
                     </div>
                 </div>
-            </div>
-            <div class="contact">
+            </section>
+            <section class="contact">
                 <h2><i class="fa-solid fa-envelope"></i> <span id="contact-title">Contact</span></h2>
                 <p id="email-label">Email: <a href="mailto:nguyenhaiduong052005@gmail.com">nguyenhaiduong052005@gmail.com</a></p>
                 <p id="phone-label">Phone: <a href="tel:0374264592">0374264592</a></p>
-            </div>
-        </div>
-    </div>
+            </section>
+        </section>
+    </main>
     <script src="scripts.js"></script>
     <script src="lang.js"></script>
 </body>
