@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <nav class="main-nav">
+        <a href="index.html" class="nav-logo"><img src="avatar.png" alt="Avatar" class="nav-avatar"></a>
+        <ul class="nav-list">
+            <li><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
+            <li><a href="projects.html" class="nav-link" id="nav-projects">Projects</a></li>
+        </ul>
+    </nav>
+    <!-- Language Switcher -->
+    <div class="lang-switch lang-switch-fixed">
+        <button id="lang-en" class="lang-btn">EN</button>
+        <button id="lang-vi" class="lang-btn">VI</button>
+    </div>
+    <main class="container">
+        <section style="width:100%">
+            <a href="index.html" class="cta-btn" style="margin-bottom:18px;display:inline-block"><i class="fa-solid fa-arrow-left"></i> <span id="back-home">Back to Home</span></a>
+            <h1 id="projects-header">My Projects</h1>
+            <div class="projects-list">
+                <div class="project-card" data-id="platformer">
+                    <img src="demo1.jpg" class="project-img" alt="Demo 1">
+                    <div class="project-title" data-en="Game Platformer Mini" data-vi="Game Platformer Mini">Game Platformer Mini</div>
+                    <div class="project-desc" data-en="A small platformer game, learning basic Unity." data-vi="Một game platformer nhỏ gọn, học Unity cơ bản.">A small platformer game, learning basic Unity.</div>
+                    <a href="#" class="project-btn" data-en="View Details" data-vi="Xem chi tiết">View Details</a>
+                </div>
+                <div class="project-card" data-id="puzzle">
+                    <img src="demo2.jpg" class="project-img" alt="Demo 2">
+                    <div class="project-title" data-en="Prototype Puzzle" data-vi="Prototype Puzzle">Prototype Puzzle</div>
+                    <div class="project-desc" data-en="A prototype for an interesting puzzle game." data-vi="Prototype cho một trò chơi giải đố thú vị.">A prototype for an interesting puzzle game.</div>
+                    <a href="#" class="project-btn" data-en="View Details" data-vi="Xem chi tiết">View Details</a>
+                </div>
+                <div class="project-card" data-id="pixelart">
+                    <img src="demo3.jpg" class="project-img" alt="Demo 3">
+                    <div class="project-title" data-en="Pixel Art Adventure" data-vi="Pixel Art Adventure">Pixel Art Adventure</div>
+                    <div class="project-desc" data-en="A retro-style adventure game with custom pixel art." data-vi="Game phiêu lưu phong cách retro với đồ họa pixel tự vẽ.">A retro-style adventure game with custom pixel art.</div>
+                    <a href="#" class="project-btn" data-en="View Details" data-vi="Xem chi tiết">View Details</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+    // Simple language switcher for projects.html
+    (function() {
+        function setLang(lang) {
+            document.getElementById('projects-header').textContent = lang === 'vi' ? 'Dự án của tôi' : 'My Projects';
+            document.getElementById('back-home').textContent = lang === 'vi' ? 'Về trang chủ' : 'Back to Home';
+            document.querySelectorAll('.project-title').forEach(e => {
+                e.textContent = e.getAttribute('data-' + lang);
+            });
+            document.querySelectorAll('.project-desc').forEach(e => {
+                e.textContent = e.getAttribute('data-' + lang);
+            });
+            document.querySelectorAll('.project-btn').forEach(e => {
+                e.textContent = e.getAttribute('data-' + lang);
+            });
+            // Update nav menu
+            if (document.getElementById('nav-home')) {
+                document.getElementById('nav-home').textContent = lang === 'vi' ? 'Trang chủ' : 'Home';
+            }
+            if (document.getElementById('nav-projects')) {
+                document.getElementById('nav-projects').textContent = lang === 'vi' ? 'Dự án' : 'Projects';
+            }
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            document.getElementById('lang-vi').classList.toggle('active', lang === 'vi');
+        }
+        document.getElementById('lang-en').onclick = () => setLang('en');
+        document.getElementById('lang-vi').onclick = () => setLang('vi');
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() { setLang('en'); });
+        } else {
+            setLang('en');
+        }
+    })();
+    // Theme toggle (light/dark mode)
+    (function() {
+        if (document.querySelector('.theme-toggle')) return;
+        const themeBtn = document.createElement('button');
+        themeBtn.innerHTML = '🌙';
+        themeBtn.className = 'theme-toggle';
+        Object.assign(themeBtn.style, {
+            position: 'fixed', top: '24px', right: '32px', zIndex: '99', fontSize: '1.5rem',
+            background: 'none', border: 'none', cursor: 'pointer'
+        });
+        document.body.appendChild(themeBtn);
+        themeBtn.onclick = () => {
+            document.body.classList.toggle('light-mode');
+            themeBtn.innerHTML = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+        };
+    })();
+    </script>
+</body>
+</html>
