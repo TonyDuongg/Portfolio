@@ -1,31 +1,15 @@
 // === THEME TOGGLE (Light/Dark Mode) ===
 (function() {
-    const themeBtn = document.createElement('button');
-    themeBtn.innerHTML = '🌙';
-    themeBtn.className = 'theme-toggle';
-    Object.assign(themeBtn.style, {
-        position: 'fixed', top: '24px', right: '32px', zIndex: '99', fontSize: '1.5rem',
-        background: 'none', border: 'none', cursor: 'pointer'
-    });
-    document.body.appendChild(themeBtn);
+    const themeBtn = document.getElementById('theme-toggle-btn');
+    if (!themeBtn) return;
+    function updateIcon() {
+        themeBtn.innerHTML = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+    }
     themeBtn.onclick = () => {
         document.body.classList.toggle('light-mode');
-        themeBtn.innerHTML = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+        updateIcon();
     };
-    // Add light mode CSS
-    const style = document.createElement('style');
-    style.innerHTML = `
-    body.light-mode {
-        background: linear-gradient(135deg, #eeeeee 0%, #d1faff 100%);
-        color: #232526;
-    }
-    body.light-mode .container { background: #fff; border-color: #00ffff; }
-    body.light-mode h1, body.light-mode h2, body.light-mode .job-title, body.light-mode .project-title { color: #00cccc !important; }
-    body.light-mode .about, body.light-mode .skills, body.light-mode .contact, body.light-mode .projects { background: #e6f7ff !important; }
-    body.light-mode .project-card { background: #f8ffff !important; }
-    body.light-mode .project-btn { background: #00cccc !important; color: #fff !important; }
-    `;
-    document.head.appendChild(style);
+    updateIcon();
 })();
 
 // === TYPING EFFECT FOR JOB TITLE (only on first load) ===
