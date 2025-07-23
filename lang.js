@@ -37,10 +37,14 @@
 
         // Update nav menu if exists (new structure)
         if (document.getElementById('nav-home')) {
-            document.getElementById('nav-home').textContent = lang === 'vi' ? 'Trang chủ' : 'Home';
+            document.getElementById('nav-home').innerHTML = lang === 'vi'
+                ? '<i class="fa-solid fa-home nav-icon"></i><span class="nav-text">Trang chủ</span>'
+                : '<i class="fa-solid fa-home nav-icon"></i><span class="nav-text">Home</span>';
         }
         if (document.getElementById('nav-projects')) {
-            document.getElementById('nav-projects').textContent = lang === 'vi' ? 'Dự án' : 'Projects';
+            document.getElementById('nav-projects').innerHTML = lang === 'vi'
+                ? '<i class="fa-solid fa-folder-open nav-icon"></i><span class="nav-text">Dự án</span>'
+                : '<i class="fa-solid fa-folder-open nav-icon"></i><span class="nav-text">Projects</span>';
         }
     }
     document.getElementById('lang-en').onclick = () => setLang('en');

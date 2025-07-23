@@ -316,34 +316,32 @@ h1 {
 .projects-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 18px;
-    margin: 0;
+    gap: 32px;
+    justify-content: center;
+    margin: 32px 0 0 0;
     padding: 0;
-    justify-content: flex-start;
 }
 .project-card {
     background: var(--bg);
-    border-radius: 10px;
-    box-shadow: 0 2px 18px #00ffff33;
-    padding: 12px;
-    width: 180px;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px #00ffff33;
+    padding: 18px 14px 20px 14px;
+    width: 240px;
+    min-height: 320px;
     display: flex;
     flex-direction: column;
     align-items: center;
     transition: box-shadow 0.3s, transform 0.3s;
     overflow: hidden;
     animation: fadeIn 1s;
-}
-.project-card:hover {
-    box-shadow: 0 8px 32px #00ffff55;
-    transform: translateY(-4px) scale(1.04);
+    margin-bottom: 12px;
 }
 .project-img {
     width: 100%;
-    height: 90px;
+    height: 120px;
     object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 8px;
+    border-radius: 10px;
+    margin-bottom: 12px;
     background: var(--accent);
     transition: filter 0.3s;
 }
@@ -352,26 +350,31 @@ h1 {
 }
 .project-title {
     color: var(--main);
-    font-size: 1.05rem;
-    margin: 0 0 4px 0;
+    font-size: 1.15rem;
+    margin: 0 0 6px 0;
     text-align: center;
+    font-family: 'Orbitron', 'Oxanium', Arial, sans-serif;
+    font-weight: 700;
 }
 .project-desc {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--text);
-    margin-bottom: 8px;
+    margin-bottom: 16px;
     text-align: center;
+    min-height: 48px;
 }
 .project-btn {
     background: var(--main);
     color: var(--accent);
     border: none;
-    border-radius: 6px;
-    padding: 6px 16px;
+    border-radius: 10px;
+    padding: 8px 22px;
     font-family: 'Oxanium', 'Orbitron', Arial, sans-serif;
     font-weight: 700;
     cursor: pointer;
     transition: background 0.2s, color 0.2s, transform 0.2s;
+    font-size: 1.05rem;
+    margin-top: auto;
 }
 .project-btn:hover {
     background: var(--accent);
@@ -560,6 +563,14 @@ h1 {
     }
 }
 @media (max-width: 900px) {
+    .projects-list {
+        gap: 18px;
+    }
+    .project-card {
+        width: 90vw;
+        min-width: 220px;
+        max-width: 340px;
+    }
     main.container {
         flex-direction: column;
         max-width: 98vw;
@@ -625,6 +636,17 @@ h1 {
     }
 }
 @media (max-width: 600px) {
+    .projects-list {
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+    }
+    .project-card {
+        width: 98vw;
+        min-width: unset;
+        max-width: 98vw;
+        padding: 12px 4vw 16px 4vw;
+    }
     .main-nav {
         padding: 0 1vw;
         height: 38px;

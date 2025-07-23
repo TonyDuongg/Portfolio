@@ -13,15 +13,29 @@
     <nav class="main-nav">
         <a href="index.html" class="nav-logo"><img src="avatar.png" alt="Avatar" class="nav-avatar"></a>
         <ul class="nav-list">
-            <li><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
-            <li><a href="projects.html" class="nav-link" id="nav-projects">Projects</a></li>
+            <li>
+                <a href="index.html" class="nav-link" id="nav-home">
+                    <i class="fa-solid fa-home nav-icon"></i>
+                    <span class="nav-text">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="projects.html" class="nav-link" id="nav-projects">
+                    <i class="fa-solid fa-folder-open nav-icon"></i>
+                    <span class="nav-text">Projects</span>
+                </a>
+            </li>
         </ul>
+        <div class="nav-actions">
+            <div class="nav-lang-switch">
+                <button id="lang-en" class="nav-btn lang-btn">EN</button>
+                <button id="lang-vi" class="nav-btn lang-btn">VI</button>
+            </div>
+            <button class="nav-btn theme-toggle" id="theme-toggle-btn" aria-label="Toggle theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
     </nav>
-    <!-- Language Switcher -->
-    <div class="lang-switch lang-switch-fixed">
-        <button id="lang-en" class="lang-btn">EN</button>
-        <button id="lang-vi" class="lang-btn">VI</button>
-    </div>
     <main class="container">
         <section style="width:100%">
             <a href="index.html" class="cta-btn" style="margin-bottom:18px;display:inline-block"><i class="fa-solid fa-arrow-left"></i> <span id="back-home">Back to Home</span></a>
