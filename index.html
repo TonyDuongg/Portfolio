@@ -10,11 +10,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Language Switcher -->
-    <div class="lang-switch lang-switch-fixed">
-        <button id="lang-en" class="lang-btn">EN</button>
-        <button id="lang-vi" class="lang-btn">VI</button>
-    </div>
+    <!-- Navigation Menu -->
+    <nav class="main-nav">
+        <a href="index.html" class="nav-logo"><img src="avatar.png" alt="Avatar" class="nav-avatar"></a>
+        <ul class="nav-list">
+            <li><a href="index.html" class="nav-link nav-home-link"><i class="fa-solid fa-home nav-icon"></i><span class="nav-text">Home</span></a></li>
+            <li><a href="projects.html" class="nav-link nav-projects-link"><i class="fa-solid fa-folder-open nav-icon"></i><span class="nav-text">Projects</span></a></li>
+        </ul>
+        <div class="nav-actions">
+            <div class="nav-lang-switch">
+                <button id="lang-en" class="nav-btn lang-btn">EN</button>
+                <button id="lang-vi" class="nav-btn lang-btn">VI</button>
+            </div>
+            <button class="nav-btn theme-toggle" id="theme-toggle-btn" aria-label="Toggle theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+    </nav>
     <main class="container">
         <!-- Profile Left -->
         <aside class="profile-left">
@@ -29,7 +41,7 @@
             <!-- Quick Info Blocks -->
             <div class="quick-block quote-block">
                 <i class="fa-solid fa-quote-left"></i>
-                <span id="quick-quote" data-en="Dreams remain dreams unless you make them real." data-vi="Ước mơ vốn chỉ mãi là ước mơ nếu bạn không thực hiện nó">Dreams remain dreams unless you make them real.</span>
+                <span id="quick-quote" data-en="Dreams only become reality when you take action" data-vi="Ước mơ chỉ thành hiện thực khi bạn hành động">Dreams only become reality when you take action</span>
             </div>
             <div class="quick-block goals-block">
                 <h3><i class="fa-solid fa-bullseye"></i> <span id="goals-title">Goals</span></h3>
@@ -61,10 +73,10 @@
             <section class="about">
                 <h2><i class="fa-solid fa-user"></i> <span id="about-title">About</span></h2>
                 <p id="about-content">
-                    - I am a young game developer, learning and growing every day with a passion for creativity and technology.<br>
-                    - Always seeking new challenges to improve my skills and knowledge.<br>
-                    - Passionate about building products that bring exciting experiences to players.<br>
-                    - Ready to collaborate and learn from the community and colleagues to develop myself.
+                    - I am a passionate and creative game developer, always striving to turn ideas into reality.<br>
+                    - I embrace challenges as opportunities to grow and innovate.<br>
+                    - My goal is to craft unique experiences that inspire and delight players.<br>
+                    - I believe in lifelong learning, collaboration, and making a positive impact through technology.
                 </p>
             </section>
             <section class="skills">
@@ -88,23 +100,6 @@
                 <div class="skill-bar">
                     <span><i class="fa-solid fa-language"></i> <span class="skill-name" data-en="English for reading docs" data-vi="Tiếng Anh đọc hiểu tài liệu">English for reading docs</span></span>
                     <div class="bar"><div class="progress" style="width: 55%"></div></div>
-                </div>
-            </section>
-            <section class="projects" style="display:none;">
-                <h2><i class="fa-solid fa-folder-open"></i> <span id="projects-title">Projects</span></h2>
-                <div class="projects-list">
-                    <div class="project-card">
-                        <img src="demo1.jpg" class="project-img" alt="Demo 1">
-                        <div class="project-title" data-en="Game Platformer Mini" data-vi="Game Platformer Mini">Game Platformer Mini</div>
-                        <div class="project-desc" data-en="A small platformer game, learning basic Unity." data-vi="Một game platformer nhỏ gọn, học Unity cơ bản.">A small platformer game, learning basic Unity.</div>
-                        <a href="#" class="project-btn" data-en="View Project" data-vi="Xem dự án">View Project</a>
-                    </div>
-                    <div class="project-card">
-                        <img src="demo2.jpg" class="project-img" alt="Demo 2">
-                        <div class="project-title" data-en="Prototype Puzzle" data-vi="Prototype Puzzle">Prototype Puzzle</div>
-                        <div class="project-desc" data-en="A prototype for an interesting puzzle game." data-vi="Prototype cho một trò chơi giải đố thú vị.">A prototype for an interesting puzzle game.</div>
-                        <a href="#" class="project-btn" data-en="View Project" data-vi="Xem dự án">View Project</a>
-                    </div>
                 </div>
             </section>
             <section class="contact">
