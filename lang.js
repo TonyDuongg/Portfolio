@@ -11,15 +11,15 @@
         document.getElementById('email-label').innerHTML = (lang === 'vi' ? 'Email: ' : 'Email: ') + '<a href="mailto:nguyenhaiduong052005@gmail.com">nguyenhaiduong052005@gmail.com</a>';
         document.getElementById('phone-label').innerHTML = (lang === 'vi' ? 'Điện thoại: ' : 'Phone: ') + '<a href="tel:0374264592">0374264592</a>';
         document.getElementById('about-content').innerHTML = lang === 'vi'
-            ? `- Tôi là một lập trình viên game còn non trẻ, đang học hỏi và phát triển từng ngày với niềm đam mê sáng tạo và công nghệ.<br>
-               - Luôn tìm kiếm những thử thách mới để nâng cao kỹ năng và kiến thức.<br>
-               - Đam mê xây dựng những sản phẩm mang lại trải nghiệm thú vị cho người chơi.<br>
-               - Sẵn sàng hợp tác, học hỏi từ cộng đồng và đồng nghiệp để phát triển bản thân.`
-            : `- I am a young game developer, learning and growing every day with a passion for creativity and technology.<br>
-               - Always seeking new challenges to improve my skills and knowledge.<br>
-               - Passionate about building products that bring exciting experiences to players.<br>
-               - Ready to collaborate and learn from the community and colleagues to develop myself.`;
-        document.getElementById('quick-quote').textContent = document.getElementById('quick-quote').getAttribute('data-' + lang);
+            ? `- Tôi là một lập trình viên game đầy đam mê và sáng tạo, luôn nỗ lực biến ý tưởng thành hiện thực.<br>
+               - Tôi xem thử thách là cơ hội để phát triển và đổi mới.<br>
+               - Mục tiêu của tôi là tạo ra những trải nghiệm độc đáo, truyền cảm hứng cho người chơi.<br>
+               - Tôi tin vào việc học hỏi suốt đời, hợp tác và tạo ra giá trị tích cực qua công nghệ.`
+            : `- I am a passionate and creative game developer, always striving to turn ideas into reality.<br>
+               - I embrace challenges as opportunities to grow and innovate.<br>
+               - My goal is to craft unique experiences that inspire and delight players.<br>
+               - I believe in lifelong learning, collaboration, and making a positive impact through technology.`;
+        document.getElementById('quick-quote').textContent = lang === 'vi' ? 'Ước mơ chỉ thành hiện thực khi bạn hành động' : 'Dreams only become reality when you take action';
         document.querySelectorAll('.skill-name').forEach(e => {
             e.textContent = e.getAttribute('data-' + lang);
         });
@@ -34,6 +34,14 @@
         });
         document.getElementById('lang-en').classList.toggle('active', lang === 'en');
         document.getElementById('lang-vi').classList.toggle('active', lang === 'vi');
+
+        // Update nav menu if exists (new structure)
+        if (document.getElementById('nav-home')) {
+            document.getElementById('nav-home').textContent = lang === 'vi' ? 'Trang chủ' : 'Home';
+        }
+        if (document.getElementById('nav-projects')) {
+            document.getElementById('nav-projects').textContent = lang === 'vi' ? 'Dự án' : 'Projects';
+        }
     }
     document.getElementById('lang-en').onclick = () => setLang('en');
     document.getElementById('lang-vi').onclick = () => setLang('vi');
