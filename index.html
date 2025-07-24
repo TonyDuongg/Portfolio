@@ -1,115 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile</title>
+    <title>TonyD | Game Developer Portfolio</title>
+    <link rel="icon" href="avatar.png" type="image/png">
+    <meta name="description"
+        content="Portfolio of Nguyen Hai Duong (TonyD) - passionate game developer, Unity, pixel art, teamwork, 2D games.">
+    <meta property="og:title" content="TonyD | Game Developer Portfolio">
+    <meta property="og:description" content="Game Developer, Unity, Pixel Art, Teamwork.">
+    <meta property="og:image" content="avatar.png">
+    <meta name="theme-color" content="#ffe396">
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Caveat:wght@700&family=Poppins:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
+
 <body>
-    <!-- Navigation Menu -->
+    <!-- Navigation -->
     <nav class="main-nav">
-        <a href="index.html" class="nav-logo"><img src="avatar.png" alt="Avatar" class="nav-avatar"></a>
+        <a href="index.html" class="nav-logo">
+            <img src="avatar.png" alt="Avatar" class="nav-avatar">
+        </a>
         <ul class="nav-list">
-            <li><a href="index.html" class="nav-link nav-home-link"><i class="fa-solid fa-home nav-icon"></i><span class="nav-text">Home</span></a></li>
-            <li><a href="index.html" class="nav-link nav-projects-link"><i class="fa-solid fa-folder-open nav-icon"></i><span class="nav-text">Projects</span></a></li>
+            <li>
+                <a href="index.html" class="nav-link nav-home-link active">
+                    <i class="fa-solid fa-home nav-icon"></i><span class="nav-text">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="projects.html" class="nav-link nav-projects-link">
+                    <i class="fa-solid fa-folder-open nav-icon"></i><span class="nav-text">Projects</span>
+                </a>
+            </li>
         </ul>
         <div class="nav-actions">
-            <div class="nav-lang-switch">
-                <button id="lang-en" class="nav-btn lang-btn">EN</button>
-                <button id="lang-vi" class="nav-btn lang-btn">VI</button>
-            </div>
             <button class="nav-btn theme-toggle" id="theme-toggle-btn" aria-label="Toggle theme">
                 <i class="fa-solid fa-moon"></i>
             </button>
+            <!-- <button class="nav-btn music-toggle" id="music-toggle-btn" aria-label="Toggle music">
+                <i class="fa-solid fa-music"></i>
+            </button> -->
         </div>
     </nav>
     <main class="container">
         <!-- Profile Left -->
         <aside class="profile-left">
             <img src="avatar.png" alt="Avatar" class="avatar">
-            <h1 id="name">Nguyen Hai Duong</h1>
-            <button class="job-title-btn" id="job-title-btn"><i class="fa-solid fa-gamepad"></i> Game Developer</button>
-            <div class="social">
-                <a href="https://www.facebook.com/haiduong205" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                <a href="https://www.linkedin.com/in/tonyduongg" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://github.com/tonyduongg" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <div class="music-player">
+                <button id="music-play-btn" class="music-play-btn">
+                    <i class="fa-solid fa-play"></i>
+                </button>
+                <input type="range" id="music-progress" class="music-progress" min="0" value="0" step="1">
+                <span class="music-time" id="music-current-time">0:00</span>
+                <span class="music-time" id="music-duration">/ 0:00</span>
             </div>
-            <!-- Quick Info Blocks -->
-            <div class="quick-block quote-block">
+            <audio id="bg-music" preload="auto">
+                <source src="Download.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <h1 id="name" data-aos="fade-right">
+                Nguyen Hai Duong <span style="font-size:1.2em">🎮</span>
+            </h1>
+            <button class="job-title-btn" id="job-title-btn" data-typed="Game Developer">
+                <i class="fa-solid fa-gamepad"></i> Game Developer
+            </button>
+            <div class="social" data-aos="fade-right" data-aos-delay="300">
+                <a href="https://www.facebook.com/haiduong205" target="_blank" aria-label="Facebook"><i
+                        class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/in/tonyduongg" target="_blank" aria-label="LinkedIn"><i
+                        class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/tonyduongg" target="_blank" aria-label="GitHub"><i
+                        class="fa-brands fa-github"></i></a>
+            </div>
+            <div class="quick-block quote-block" data-aos="fade-up" data-aos-delay="350">
                 <i class="fa-solid fa-quote-left"></i>
-                <span id="quick-quote" data-en="Dreams only become reality when you take action" data-vi="Ước mơ chỉ thành hiện thực khi bạn hành động">Dreams only become reality when you take action</span>
+                <span id="quick-quote" data-typed="Dreams only become reality when you take action">
+                    Dreams only become reality when you take action
+                </span>
             </div>
-            <div class="quick-block goals-block">
-                <h3><i class="fa-solid fa-bullseye"></i> <span id="goals-title">Goals</span></h3>
-                <ul id="goals-list">
+            <div class="quick-block goals-block" data-aos="fade-up" data-aos-delay="400">
+                <h3>
+                    <i class="fa-solid fa-bullseye"></i> Goals <span style="font-size:1.1em">💡</span>
+                </h3>
+                <ul>
                     <li>Become a skilled game developer</li>
                     <li>Build creative, fun products</li>
                     <li>Grow with the tech community</li>
                 </ul>
             </div>
-            <div class="quick-block interests-block">
-                <h3><i class="fa-solid fa-gamepad"></i> <span id="interests-title">Interests</span></h3>
-                <ul id="interests-list">
+            <div class="quick-block interests-block" data-aos="fade-up" data-aos-delay="450">
+                <h3>
+                    <i class="fa-solid fa-gamepad"></i> Interests <span style="font-size:1.1em">🕹️</span>
+                </h3>
+                <ul>
                     <li>Pixel art & retro games</li>
                     <li>Game design & prototyping</li>
                     <li>Learning new tech</li>
                 </ul>
             </div>
-            <div class="quick-block cta-block" style="display:none;">
-                <a href="CV.pdf" class="cta-btn" download><i class="fa-solid fa-file-arrow-down"></i> <span id="cta-text">Download CV</span></a>
+            <div class="quick-block cta-block" data-aos="fade-up" data-aos-delay="500">
+                <a href="CV.pdf" class="cta-btn" download>
+                    <i class="fa-solid fa-file-arrow-down"></i> Download CV
+                </a>
+                <a href="https://www.linkedin.com/in/tonyduongg" target="_blank" class="cta-btn"
+                    style="margin-left:9px;"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
             </div>
-            <div class="quick-block days-block">
+            <div class="quick-block days-block" data-aos="fade-up" data-aos-delay="600">
                 <i class="fa-solid fa-hourglass-half"></i>
-                <span id="days-title">Days coding:</span>
-                <span id="days-count"></span>
+                Days coding: <span id="days-count"></span>
+            </div>
+            <div class="quick-block achievements-block" data-aos="fade-up" data-aos-delay="700">
+                <h3><i class="fa-solid fa-star"></i> Achievements <span style="font-size:1.05em">🏆</span></h3>
+                <ul>
+                    <li>🎮 Game Jam Finalist</li>
+                    <li>⭐ Top 5 Pixel Art Project</li>
+                    <li>🏅 Published 2 mini-games</li>
+                </ul>
             </div>
         </aside>
+
         <!-- Profile Right -->
         <section class="profile-right">
-            <section class="about">
-                <h2><i class="fa-solid fa-user"></i> <span id="about-title">About</span></h2>
-                <p id="about-content">
-                    - I am a passionate and creative game developer, always striving to turn ideas into reality.<br>
-                    - I embrace challenges as opportunities to grow and innovate.<br>
-                    - My goal is to craft unique experiences that inspire and delight players.<br>
-                    - I believe in lifelong learning, collaboration, and making a positive impact through technology.
+            <!-- About -->
+            <section class="about" data-aos="fade-left" data-aos-delay="100">
+                <h2><i class="fa-solid fa-user"></i> About Me <span style="font-size:1.2em">👾</span></h2>
+                <p>
+                    <b>Hi! I'm Hai Duong</b> <br>
+                    🚀 A passionate, creative game developer on a journey to craft fun and memorable experiences.<br>
+                    🎯 I love turning wild ideas into reality and leveling up every project!<br>
+                    💡 Favorite challenge: Build something nobody’s seen before.<br>
+                    👥 Let's connect and create!
                 </p>
             </section>
-            <section class="skills">
-                <h2><i class="fa-solid fa-code"></i> <span id="skills-title">Skills</span></h2>
-                <div class="skill-bar">
-                    <span><i class="fa-brands fa-unity"></i> <span class="skill-name" data-en="C# (Unity)" data-vi="C# (Unity)">C# (Unity)</span></span>
-                    <div class="bar"><div class="progress" style="width: 70%"></div></div>
+
+            <!-- Featured Projects -->
+            <section class="featured-projects" id="featured-projects">
+                <h2><i class="fa-solid fa-star"></i> Featured Projects</h2>
+                <div class="projects-list">
+                    <div class="project-card">
+                        <img src="demo1.jpg" alt="Demo 1" class="project-img">
+                        <div class="project-title">Game Platformer Mini</div>
+                        <div class="project-desc">A small platformer game, learning basic Unity.</div>
+                        <a href="projects.html#platformer" class="project-btn">View Details</a>
+                    </div>
+                    <div class="project-card">
+                        <img src="demo2.jpg" alt="Demo 2" class="project-img">
+                        <div class="project-title">Prototype Puzzle</div>
+                        <div class="project-desc">A prototype for an interesting puzzle game.</div>
+                        <a href="projects.html#puzzle" class="project-btn">View Details</a>
+                    </div>
                 </div>
-                <div class="skill-bar">
-                    <span><i class="fa-solid fa-cube"></i> <span class="skill-name" data-en="Basic Game Design" data-vi="Thiết kế game cơ bản">Basic Game Design</span></span>
-                    <div class="bar"><div class="progress" style="width: 60%"></div></div>
-                </div>
-                <div class="skill-bar">
-                    <span><i class="fa-brands fa-git-alt"></i> <span class="skill-name" data-en="Version Control with Git" data-vi="Quản lý phiên bản với Git">Version Control with Git</span></span>
-                    <div class="bar"><div class="progress" style="width: 65%"></div></div>
-                </div>
-                <div class="skill-bar">
-                    <span><i class="fa-solid fa-paintbrush"></i> <span class="skill-name" data-en="Photoshop, Figma" data-vi="Photoshop, Figma">Photoshop, Figma</span></span>
-                    <div class="bar"><div class="progress" style="width: 50%"></div></div>
-                </div>
-                <div class="skill-bar">
-                    <span><i class="fa-solid fa-language"></i> <span class="skill-name" data-en="English for reading docs" data-vi="Tiếng Anh đọc hiểu tài liệu">English for reading docs</span></span>
-                    <div class="bar"><div class="progress" style="width: 55%"></div></div>
+                <a href="projects.html" class="cta-btn" style="margin-top:10px;display:inline-block;">
+                    <i class="fa-solid fa-folder-open"></i> See All Projects
+                </a>
+            </section>
+
+            <!-- Skills: badge style -->
+            <section class="skills" id="skills" data-aos="fade-left" data-aos-delay="100">
+                <h2><i class="fa-solid fa-code"></i> Skills <span style="font-size:1.2em">🛠️</span></h2>
+                <div class="skills-circles">
+                    <div class="skill-circle skill-scroll" data-skill="Unity">
+                        <span class="circle-icon"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg"
+                                alt="Unity" style="height:32px;width:32px;"></span>
+                        <div class="circle-label">Unity (C#)</div>
+                        <div class="circle-percent">Lv.3</div>
+                    </div>
+                    <div class="skill-circle skill-scroll" data-skill="Git">
+                        <span class="circle-icon"><i class="fa-brands fa-git-alt"></i></span>
+                        <div class="circle-label">Git & GitHub</div>
+                        <div class="circle-percent">Lv.3</div>
+                    </div>
+                    <div class="skill-circle skill-scroll" data-skill="Photoshop">
+                        <span class="circle-icon"><i class="fa-solid fa-paintbrush"></i></span>
+                        <div class="circle-label">Photoshop, Figma</div>
+                        <div class="circle-percent">Lv.2</div>
+                    </div>
+                    <div class="skill-circle skill-scroll" data-skill="2DGame">
+                        <span class="circle-icon"><i class="fa-solid fa-gamepad"></i></span>
+                        <div class="circle-label">2D Game</div>
+                        <div class="circle-percent">Lv.3</div>
+                    </div>
+                    <div class="skill-circle skill-scroll" data-skill="Teamwork">
+                        <span class="circle-icon"><i class="fa-solid fa-users"></i></span>
+                        <div class="circle-label">Teamwork</div>
+                        <div class="circle-percent">Lv.3</div>
+                    </div>
+                    <div class="skill-circle skill-scroll" data-skill="Firebase">
+                        <span class="circle-icon"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+                                alt="Firebase" style="height:32px;width:32px;"></span>
+                        <div class="circle-label">Firebase</div>
+                        <div class="circle-percent">Lv.2</div>
+                    </div>
                 </div>
             </section>
-            <section class="contact">
-                <h2><i class="fa-solid fa-envelope"></i> <span id="contact-title">Contact</span></h2>
-                <p id="email-label">Email: <a href="mailto:nguyenhaiduong052005@gmail.com">nguyenhaiduong052005@gmail.com</a></p>
-                <p id="phone-label">Phone: <a href="tel:0374264592">0374264592</a></p>
+
+            <!-- Contact with real form -->
+            <section class="contact" id="contact" data-aos="fade-left" data-aos-delay="400">
+                <h2><i class="fa-solid fa-envelope"></i> Contact</h2>
+                <form class="contact-form" action="#" method="POST">
+                    <input type="text" name="name" placeholder="Your name..." required>
+                    <input type="email" name="email" placeholder="Your email..." required>
+                    <textarea name="message" rows="3" placeholder="Your message..." required></textarea>
+                    <button type="submit" class="cta-btn"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+                </form>
+                <div class="contact-note">Or email me directly at <a
+                        href="mailto:nguyenhaiduong052005@gmail.com">nguyenhaiduong052005@gmail.com</a></div>
+                <p style="margin-top: 7px; font-size: 0.95em; color: #ae9738;">Phone: <a
+                        href="tel:0374264592">0374264592</a></p>
             </section>
         </section>
     </main>
+
+    <footer id="main-footer">
+        <div class="footer-left" id="footer-time"></div>
+        <div class="footer-right">© 2025 <span class="footer-brand">TonyD</span>. All rights reserved.</div>
+    </footer>
+
+    <!-- Nhạc nền (nếu muốn bật chức năng này, chỉ cần bỏ comment dòng dưới và có file mp3 phù hợp) -->
+    <!--
+    <audio id="bg-music" loop>
+        <source src="your-music.mp3" type="audio/mpeg">
+    </audio>
+    -->
+
     <script src="scripts.js"></script>
-    <script src="lang.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        setTimeout(() => { document.body.classList.add('page-show'); }, 150);
+        AOS.init({ duration: 900, offset: 50, once: true });
+        // Footer: Live time
+        (function () {
+            const yearDiv = document.getElementById('footer-time');
+            function updateTime() {
+                const now = new Date();
+                yearDiv.innerHTML = `&copy; ${now.getFullYear()} | <span id="nowTime">${now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span>`;
+            }
+            setInterval(updateTime, 1000);
+            updateTime();
+        })();
+        // Simple contact form fake handler (prevent reload, alert fake message)
+        document.querySelector('.contact-form')?.addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert("Thank you for your message!\n(This demo form does not actually send email!)");
+            this.reset();
+        });
+    </script>
 </body>
+
 </html>

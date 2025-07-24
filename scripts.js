@@ -1,9 +1,11 @@
 // === THEME TOGGLE (Light/Dark Mode) ===
-(function() {
+(function () {
     const themeBtn = document.getElementById('theme-toggle-btn');
     if (!themeBtn) return;
     function updateIcon() {
-        themeBtn.innerHTML = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+        themeBtn.innerHTML = document.body.classList.contains('light-mode')
+            ? '<i class="fa-solid fa-sun"></i>'
+            : '<i class="fa-solid fa-moon"></i>';
     }
     themeBtn.onclick = () => {
         document.body.classList.toggle('light-mode');
@@ -12,85 +14,76 @@
     updateIcon();
 })();
 
-// === TYPING EFFECT FOR JOB TITLE (only on first load) ===
-(function() {
-    function typingEffect() {
-        const jobTitle = document.getElementById('job-title');
-        if (!jobTitle) return;
-        let text = jobTitle.textContent.trim();
-        if (jobTitle.querySelector('i')) {
-            text = jobTitle.childNodes[jobTitle.childNodes.length - 1].textContent.trim();
-        }
-        jobTitle.innerHTML = '<i class="fa-solid fa-gamepad"></i> ';
+// === ENTRY ANIMATION & SCROLL REVEAL (AOS) ===
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => document.body.classList.add('page-show'), 180);
+    const reveals = document.querySelectorAll('.about, .skills, .contact, .quick-block, .avatar, .social, .job-title-btn');
+    function revealOnScroll() {
+        reveals.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 60) el.classList.add('reveal');
+            else el.classList.remove('reveal');
+        });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+});
+
+// === TYPING EFFECT FOR JOB TITLE & QUOTE ===
+(function () {
+    function typeText(el, text, speed = 48) {
+        if (!el || !text) return;
+        el.textContent = '';
         let i = 0;
         function type() {
             if (i < text.length) {
-                jobTitle.innerHTML = '<i class="fa-solid fa-gamepad"></i> ' + text.slice(0, i + 1);
-                i++;
-                setTimeout(type, 60);
+                el.textContent += text[i++];
+                setTimeout(type, speed);
             }
         }
         type();
     }
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', typingEffect);
-    } else {
-        typingEffect();
-    }
-})();
+    window.addEventListener('DOMContentLoaded', () => {
+        const jobEl = document.getElementById('job-title-btn');
+        const jobText = jobEl ? jobEl.getAttribute('data-typed') : '';
+        if (jobEl && jobText) typeText(jobEl, jobText, 36);
 
-// === SKILL BAR ANIMATION ON SCROLL ===
-(function() {
-    function animateSkillBars() {
-        document.querySelectorAll('.progress').forEach(bar => {
-            const rect = bar.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 40) {
-                bar.style.width = bar.getAttribute('style').match(/width:\s*([\d.]+%)/)[1];
-                bar.style.transition = 'width 1s cubic-bezier(.68,-0.55,.27,1.55)';
-            } else {
-                bar.style.width = '0';
-            }
-        });
-    }
-    window.addEventListener('scroll', animateSkillBars);
-    window.addEventListener('load', animateSkillBars);
-})();
-
-// === CLICK EFFECT FOR BUTTONS & ICONS ===
-(function() {
-    document.querySelectorAll('.project-btn, .social a').forEach(el => {
-        el.addEventListener('click', () => {
-            el.classList.add('clicked');
-            setTimeout(() => el.classList.remove('clicked'), 300);
-        });
+        const quoteEl = document.getElementById('quick-quote');
+        const quote = quoteEl ? quoteEl.getAttribute('data-typed') : '';
+        if (quoteEl && quote) typeText(quoteEl, quote, 28);
     });
-    // Add click effect CSS
-    const clickStyle = document.createElement('style');
-    clickStyle.innerHTML = `.clicked { box-shadow: 0 0 16px #00ffff99, 0 0 8px #ff2d55; transform: scale(1.12); }`;
-    document.head.appendChild(clickStyle);
 })();
 
-// === FOOTER: CURRENT YEAR & LIVE TIME ===
-(function() {
-    const yearDiv = document.createElement('div');
-    yearDiv.style.textAlign = 'center';
-    yearDiv.style.margin = '18px 0 8px 0';
-    yearDiv.style.color = 'var(--main)';
-    yearDiv.style.fontFamily = "'Orbitron', 'Oxanium', Arial, sans-serif";
-    yearDiv.style.fontSize = '1rem';
-    yearDiv.innerHTML = `&copy; ${new Date().getFullYear()} | Thời gian: <span id="nowTime"></span>`;
-    document.body.appendChild(yearDiv);
-    function updateTime() {
-        const now = new Date();
-        document.getElementById('nowTime').textContent =
-            now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+// === AVATAR GLOW EFFECT ON HOVER ===
+(function () {
+    const avatar = document.querySelector('.avatar');
+    if (avatar) {
+        avatar.addEventListener('mouseenter', () => {
+            avatar.style.boxShadow = '0 0 0 12px #fffbe6, 0 10px 28px #ffe18e99';
+            avatar.style.transform = 'scale(1.08) rotate(-2deg)';
+        });
+        avatar.addEventListener('mouseleave', () => {
+            avatar.style.boxShadow = '';
+            avatar.style.transform = '';
+        });
     }
-    setInterval(updateTime, 1000);
-    updateTime();
+})();
+
+// === SOUND EFFECT WHEN CLICK BUTTON/SOCIAL ICON (nhẹ nhàng) ===
+(function () {
+    const soundUrl = "https://cdn.pixabay.com/audio/2022/07/26/audio_124bfa8bdb.mp3";
+    const audio = new Audio(soundUrl);
+    audio.volume = 0.12;
+    function playSound() {
+        audio.currentTime = 0;
+        audio.play();
+    }
+    document.querySelectorAll('.project-btn, .social a, .cta-btn, .theme-toggle')
+        .forEach(el => el.addEventListener('click', playSound));
 })();
 
 // === DAYS CODING COUNTER ===
-(function() {
+(function () {
     function updateDaysCount() {
         const startDate = new Date('2023-01-17');
         const now = new Date();
@@ -104,3 +97,80 @@
         updateDaysCount();
     }
 })();
+
+// === SCROLL TO SKILLS SECTION WHEN CLICK SKILL ===
+document.querySelectorAll('.skill-scroll').forEach(el => {
+    el.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.getElementById('skills');
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            target.style.boxShadow = '0 0 0 4px #e2c378, 0 0 22px #ffd25699';
+            setTimeout(() => target.style.boxShadow = '', 800);
+        }
+    });
+});
+
+(function() {
+    const audio = document.getElementById('bg-music');
+    const btn = document.getElementById('music-play-btn');
+    const progress = document.getElementById('music-progress');
+    const cur = document.getElementById('music-current-time');
+    const dur = document.getElementById('music-duration');
+    let isPlaying = false;
+
+    if (!audio || !btn || !progress) return;
+
+    // Cập nhật time format
+    function formatTime(t) {
+        t = Math.floor(t);
+        const m = Math.floor(t / 60);
+        const s = t % 60;
+        return m + ':' + (s < 10 ? '0' + s : s);
+    }
+
+    // Khi nhạc load xong
+    audio.addEventListener('loadedmetadata', () => {
+        progress.max = Math.floor(audio.duration);
+        dur.textContent = '/ ' + formatTime(audio.duration);
+    });
+
+    // Khi nhấn play/pause
+    btn.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play();
+        } else {
+            audio.pause();
+        }
+    });
+
+    // Đổi icon khi play/pause
+    audio.addEventListener('play', function() {
+        btn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+        isPlaying = true;
+    });
+    audio.addEventListener('pause', function() {
+        btn.innerHTML = '<i class="fa-solid fa-play"></i>';
+        isPlaying = false;
+    });
+
+    // Khi kéo seekbar
+    progress.addEventListener('input', function() {
+        audio.currentTime = progress.value;
+    });
+
+    // Update progress bar/time khi chạy
+    audio.addEventListener('timeupdate', function() {
+        progress.value = Math.floor(audio.currentTime);
+        cur.textContent = formatTime(audio.currentTime);
+        // (Có thể cập nhật hiệu ứng nếu muốn)
+    });
+
+    // Khi hết bài thì reset
+    audio.addEventListener('ended', function() {
+        btn.innerHTML = '<i class="fa-solid fa-play"></i>';
+        progress.value = 0;
+        cur.textContent = '0:00';
+    });
+})();
+
