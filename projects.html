@@ -1,103 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | TonyD Portfolio</title>
-    <link rel="icon" href="avatar.png" type="image/png">
-    <meta name="description" content="Projects by Nguyen Hai Duong (TonyD) - Game developer, Unity, pixel art, 2D games.">
-    <meta property="og:title" content="Projects | TonyD Portfolio">
-    <meta property="og:description" content="Game Developer Projects, Unity, Pixel Art, Teamwork.">
-    <meta property="og:image" content="avatar.png">
-    <meta name="theme-color" content="#ffe396">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Caveat:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <!-- Navigation Menu -->
-    <nav class="main-nav">
-        <a href="index.html" class="nav-logo"><img src="avatar.png" alt="Avatar" class="nav-avatar"></a>
-        <ul class="nav-list">
-            <li>
-                <a href="index.html" class="nav-link" id="nav-home">
-                    <i class="fa-solid fa-home nav-icon"></i>
-                    <span class="nav-text">Home</span>
-                </a>
-            </li>
-            <li>
-                <a href="projects.html" class="nav-link active" id="nav-projects">
-                    <i class="fa-solid fa-folder-open nav-icon"></i>
-                    <span class="nav-text">Projects</span>
-                </a>
-            </li>
-        </ul>
-        <div class="nav-actions">
-            <button class="nav-btn theme-toggle" id="theme-toggle-btn" aria-label="Toggle theme">
-                <i class="fa-solid fa-moon"></i>
-            </button>
-        </div>
-    </nav>
-    <main class="container">
-        <section style="width:100%;padding-top:6px;">
-            <a href="index.html" class="cta-btn" style="margin-bottom:18px;display:inline-block">
-                <i class="fa-solid fa-arrow-left"></i> Back to Home
-            </a>
-            <h1 style="margin:12px 0 24px 0;">
-                <i class="fa-solid fa-star"></i> My Projects
-            </h1>
-            <div class="projects-list">
-                <div class="project-card" id="platformer">
-                    <img src="demo1.jpg" class="project-img" alt="Demo 1">
-                    <div class="project-title">Game Platformer Mini</div>
-                    <div class="project-desc">A small platformer game, learning basic Unity.</div>
-                    <a href="#" class="project-btn">View Details</a>
-                </div>
-                <div class="project-card" id="puzzle">
-                    <img src="demo2.jpg" class="project-img" alt="Demo 2">
-                    <div class="project-title">Prototype Puzzle</div>
-                    <div class="project-desc">A prototype for an interesting puzzle game.</div>
-                    <a href="#" class="project-btn">View Details</a>
-                </div>
-                <div class="project-card" id="pixelart">
-                    <img src="demo3.jpg" class="project-img" alt="Demo 3">
-                    <div class="project-title">Pixel Art Adventure</div>
-                    <div class="project-desc">A retro-style adventure game with custom pixel art.</div>
-                    <a href="#" class="project-btn">View Details</a>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer id="main-footer">
-        <div class="footer-left" id="footer-time"></div>
-        <div class="footer-right">© 2025 <span class="footer-brand">TonyD</span>. All rights reserved.</div>
-    </footer>
-    <script>
-    // Theme toggle (light/dark mode)
-    (function() {
-        const themeBtn = document.getElementById('theme-toggle-btn');
-        if (!themeBtn) return;
-        function updateIcon() {
-            themeBtn.innerHTML = document.body.classList.contains('light-mode')
-                ? '<i class="fa-solid fa-sun"></i>'
-                : '<i class="fa-solid fa-moon"></i>';
-        }
-        themeBtn.onclick = () => {
-            document.body.classList.toggle('light-mode');
-            updateIcon();
-        };
-        updateIcon();
-    })();
-    // Footer time update
-    (function () {
-        const yearDiv = document.getElementById('footer-time');
-        function updateTime() {
-            const now = new Date();
-            yearDiv.innerHTML = `&copy; ${now.getFullYear()} | <span id="nowTime">${now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span>`;
-        }
-        setInterval(updateTime, 1000);
-        updateTime();
-    })();
-    </script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content="0;url=./#work" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="./favicon.svg" />
+    <link rel="canonical" href="https://tonyduongg.github.io/Portfolio/#work" />
+    <title>Projects — Tony Duong</title>
+  </head>
+  <body>
+    <p>The projects have a new home. <a href="./#work">View Tony’s work</a>.</p>
+  </body>
 </html>

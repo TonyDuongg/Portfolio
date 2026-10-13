@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Projects &amp; Engineering Notes — TonyD</title>
+    <meta name="description" content="Java backend direction, public web projects, and developer automation by Nguyen Hai Duong.">
+    <meta name="theme-color" content="#071521">
+    <meta property="og:title" content="Projects &amp; Engineering Notes — TonyD">
+    <meta property="og:description" content="Backend focus and verified public repositories from Nguyen Hai Duong.">
+    <meta property="og:image" content="avatar.png">
+    <link rel="icon" href="avatar.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="projects">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header" data-header>
+        <div class="header-inner">
+            <a class="brand" href="index.html" aria-label="TonyD, back to home">TONYD<span>.</span></a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">
+                <span></span><span></span>
+            </button>
+            <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+                <a class="active" href="#projects">Work</a>
+                <a href="index.html#toolkit">Toolkit</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+            <button class="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch theme">
+                <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="3.5"></circle>
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+                </svg>
+                <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20 15.2A8.5 8.5 0 0 1 8.8 4 8.5 8.5 0 1 0 20 15.2Z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="projects-archive section-shell" id="projects" aria-labelledby="archive-title">
+            <div class="archive-heading reveal">
+                <div>
+                    <h1 id="archive-title">Projects &amp; engineering notes</h1>
+                    <p>Public repositories from my GitHub, plus one clearly marked note about the private backend work that shapes my current direction.</p>
+                </div>
+                <div class="project-filters" role="group" aria-label="Filter projects">
+                    <button class="active" type="button" data-filter="all" aria-pressed="true">All</button>
+                    <button type="button" data-filter="backend" aria-pressed="false">Backend</button>
+                    <button type="button" data-filter="web" aria-pressed="false">Web</button>
+                    <button type="button" data-filter="automation" aria-pressed="false">Automation</button>
+                </div>
+            </div>
+
+            <div class="archive-list" aria-live="polite">
+                <article class="archive-row reveal" id="backend-focus" data-category="backend">
+                    <div class="archive-media system-frame">
+                        <div class="preview-window preview-backend" aria-hidden="true">
+                            <div class="preview-toolbar"><span class="preview-title">backend-focus</span><span class="preview-state">private practice</span></div>
+                            <div class="architecture-canvas">
+                                <span class="canvas-label">LAYERED SERVICE</span>
+                                <div class="architecture-row"><span>REST</span><i></i><span>Service</span><i></i><span>SQL</span></div>
+                                <div class="architecture-log"><code>request → validate → persist</code><strong>focus</strong></div>
+                            </div>
+                        </div>
+                        <span class="repo-label">Current focus · private</span>
+                    </div>
+                    <div class="archive-copy">
+                        <div class="project-number">01</div>
+                        <p class="project-type">Java / Spring Boot <span>•</span> Current focus</p>
+                        <h2>Backend Engineering Focus</h2>
+                        <p>The direction behind my private learning and project work—not presented as a public, finished repository.</p>
+                        <details class="project-notes">
+                            <summary>
+                                View notes
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M14 7l5 5-5 5"></path></svg>
+                            </summary>
+                            <div>
+                                <p><strong>Focus</strong> REST APIs, maintainable service boundaries, and relational data.</p>
+                                <p><strong>Profile stack</strong> Java, Spring Boot, PostgreSQL / MySQL, Postman, and Swagger.</p>
+                                <p><strong>Visibility</strong> Private / in progress; no public Java repository is claimed here.</p>
+                                <a class="project-source" href="https://github.com/TonyDuongg" target="_blank" rel="noreferrer">View GitHub profile <span>↗</span></a>
+                            </div>
+                        </details>
+                    </div>
+                </article>
+
+                <article class="archive-row archive-row-reverse reveal" id="portfolio" data-category="web">
+                    <div class="archive-media system-frame">
+                        <div class="preview-window preview-code" aria-hidden="true">
+                            <div class="preview-toolbar"><span class="preview-title">TonyDuongg / Portfolio</span><span class="preview-state">public</span></div>
+                            <div class="code-canvas">
+                                <div class="file-rail"><span>index.html</span><span>style.css</span><span>scripts.js</span></div>
+                                <div class="code-lines"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                            </div>
+                        </div>
+                        <span class="repo-label">Public repository</span>
+                    </div>
+                    <div class="archive-copy">
+                        <div class="project-number">02</div>
+                        <p class="project-type">HTML / CSS / JavaScript <span>•</span> Responsive web</p>
+                        <h2>Personal Portfolio</h2>
+                        <p>A lightweight personal site for presenting technical direction, selected work, and contact details.</p>
+                        <details class="project-notes">
+                            <summary>
+                                View notes
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M14 7l5 5-5 5"></path></svg>
+                            </summary>
+                            <div>
+                                <p><strong>Focus</strong> Responsive layout, accessible interactions, and clear technical storytelling.</p>
+                                <p><strong>Stack</strong> Semantic HTML, modern CSS, and vanilla JavaScript.</p>
+                                <p><strong>Status</strong> Public repository and live portfolio.</p>
+                                <a class="project-source" href="https://github.com/TonyDuongg/Portfolio" target="_blank" rel="noreferrer">View source <span>↗</span></a>
+                            </div>
+                        </details>
+                    </div>
+                </article>
+
+                <article class="archive-row reveal" id="tien-len" data-category="web">
+                    <div class="archive-media system-frame">
+                        <div class="preview-window preview-route" aria-hidden="true">
+                            <div class="preview-toolbar"><span class="preview-title">Mien_Nam_30_4</span><span class="preview-state">public</span></div>
+                            <div class="route-canvas">
+                                <span class="route-city route-start">Hà Nội</span>
+                                <div class="route-line"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                                <span class="route-city route-end">Sài Gòn</span>
+                                <strong>7 historical stages</strong>
+                            </div>
+                        </div>
+                        <span class="repo-label">Public repository</span>
+                    </div>
+                    <div class="archive-copy">
+                        <div class="project-number">03</div>
+                        <p class="project-type">Vanilla JavaScript <span>•</span> Interactive web</p>
+                        <h2>Tiến Lên — Hành Trình Thống Nhất</h2>
+                        <p>A history mini-game following a seven-stage route from Hà Nội to Sài Gòn.</p>
+                        <details class="project-notes">
+                            <summary>
+                                View notes
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M14 7l5 5-5 5"></path></svg>
+                            </summary>
+                            <div>
+                                <p><strong>Features</strong> Timed quizzes, scoring, animated journey map, custom rewards, and audio controls.</p>
+                                <p><strong>Stack</strong> HTML5 Canvas / IFrame, CSS3, and vanilla JavaScript ES6+ with localStorage.</p>
+                                <p><strong>Status</strong> Public repository with a live Vercel demo.</p>
+                                <div class="project-source-list">
+                                    <a class="project-source" href="https://github.com/TonyDuongg/Mien_Nam_30_4" target="_blank" rel="noreferrer">View source <span>↗</span></a>
+                                    <a class="project-source" href="https://mien-nam-30-4.vercel.app" target="_blank" rel="noreferrer">Live demo <span>↗</span></a>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </article>
+
+                <article class="archive-row archive-row-reverse reveal" id="profile-automation" data-category="automation">
+                    <div class="archive-media system-frame">
+                        <div class="preview-window preview-automation" aria-hidden="true">
+                            <div class="preview-toolbar"><span class="preview-title">profile-updater.yml</span><span class="preview-state">scheduled</span></div>
+                            <div class="pipeline-canvas">
+                                <div><span>01</span><strong>Schedule</strong></div><i></i>
+                                <div><span>02</span><strong>Python</strong></div><i></i>
+                                <div><span>03</span><strong>SVG output</strong></div>
+                            </div>
+                        </div>
+                        <span class="repo-label">Public automation</span>
+                    </div>
+                    <div class="archive-copy">
+                        <div class="project-number">04</div>
+                        <p class="project-type">Python / GitHub Actions <span>•</span> Profile automation</p>
+                        <h2>GitHub Profile Automation</h2>
+                        <p>A scheduled workflow that refreshes language statistics and contribution visuals for the profile.</p>
+                        <details class="project-notes">
+                            <summary>
+                                View notes
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M14 7l5 5-5 5"></path></svg>
+                            </summary>
+                            <div>
+                                <p><strong>Focus</strong> Repeatable profile updates from repository data.</p>
+                                <p><strong>Stack</strong> Python, GitHub GraphQL, GitHub Actions, and generated SVG assets.</p>
+                                <p><strong>Status</strong> Public workflow with scheduled and manual runs.</p>
+                                <a class="project-source" href="https://github.com/TonyDuongg/TonyDuongg" target="_blank" rel="noreferrer">View source <span>↗</span></a>
+                            </div>
+                        </details>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer archive-footer">
+        <div class="section-shell footer-inner">
+            <p><strong>TONYD.</strong> — Java Backend Developer</p>
+            <a class="back-home" href="index.html">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M10 7l-5 5 5 5"></path></svg>
+                Back home
+            </a>
+            <p>Built with care in Vietnam · <span data-year></span></p>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
