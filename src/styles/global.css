@@ -667,66 +667,31 @@
     margin-top: 6px;
   }
 
-  /* ——— Contact: the address as display rows ——— */
+  /* ——— Contact: what to do on the left, every channel on the right ——— */
   .contact {
-    margin-top: calc(var(--gap-section) * 0.6);
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+    align-items: start;
+    padding: var(--gap-section) var(--m);
   }
-  .contact-row {
-    display: flex;
-    align-items: flex-end;
-    min-height: clamp(96px, 10vw, 150px);
-    padding: 0 var(--m) 0.2em;
-    font-size: var(--step-big);
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: -0.03em;
-  }
-  .contact-row:nth-child(odd) {
-    background: var(--surface);
-  }
-  h2.contact-row {
-    font-weight: 600;
-  }
-  .contact-row a {
-    text-decoration: none;
-  }
-  .contact-row a:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 0.05em;
-  }
-  .email-link span {
-    white-space: nowrap;
-  }
-  .contact-greet {
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 24px 40px;
-    padding-block: 28px;
-  }
-  .greet-link {
-    display: inline-flex;
-    align-items: center;
+  .contact-intro {
+    grid-column: 1 / 6;
+    display: grid;
+    justify-items: start;
     gap: 24px;
   }
-  .round-button {
-    display: grid;
-    place-items: center;
-    width: 0.9em;
-    height: 0.9em;
-    border-radius: 50%;
-    background: var(--ink);
-    color: var(--bg);
-    transition: transform 200ms var(--ease);
+  .contact-intro h2 {
+    font-size: var(--step-big);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
   }
-  .round-button svg {
-    width: 45%;
-    height: 45%;
-  }
-  .greet-link:hover .round-button {
-    transform: rotate(45deg);
-  }
-  .greet-link:active .round-button {
-    transform: scale(0.92);
+  .contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 28px;
+    margin-top: 8px;
   }
   .copy-button {
     display: inline-flex;
@@ -734,86 +699,96 @@
     gap: 10px;
     min-height: 44px;
     font-size: 1rem;
-    letter-spacing: 0;
     text-decoration: underline;
     text-decoration-thickness: 0.08em;
     text-underline-offset: 0.2em;
+    transition: transform 160ms var(--ease);
+  }
+  .copy-button:active {
+    transform: scale(0.96);
   }
   .copy-button svg {
     width: 20px;
     height: 20px;
   }
   .copy-status {
-    flex-basis: 100%;
     min-height: 1.5em;
     font-size: 1rem;
-    letter-spacing: 0;
+  }
+  .contact-list {
+    grid-column: 7 / 13;
+    display: grid;
+    gap: 6px;
+  }
+  .contact-list > div {
+    display: grid;
+    grid-template-columns: 8rem 1fr;
+    align-items: baseline;
+    gap: 16px;
+    padding: 18px 20px;
+    background: var(--surface);
+  }
+  .contact-list dt {
+    font-size: var(--step-small);
+    color: var(--muted);
+  }
+  .contact-list dd {
+    font-size: var(--step-lead);
+    overflow-wrap: anywhere;
+  }
+  .contact-list a {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+    text-decoration-color: transparent;
+    transition: text-decoration-color 200ms;
+  }
+  .contact-list a:hover {
+    text-decoration-color: currentColor;
   }
 
-  /* ——— Footer: the invitation over the cropped name ——— */
+  /* ——— Footer: the name, whole, closes the page ——— */
   .site-footer {
     --bg: var(--inv-bg);
     --ink: var(--inv-ink);
     --muted: var(--inv-muted);
     --surface: var(--inv-surface);
-    position: relative;
-    min-height: 100svh;
     display: grid;
-    grid-template-rows: 1fr auto auto;
-    padding: clamp(48px, 7vw, 104px) var(--m) 0;
+    gap: 36px;
+    padding: clamp(56px, 7vw, 104px) var(--m) 28px;
     background: var(--bg);
     color: var(--ink);
-    overflow: hidden;
   }
-  .footer-top {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 24px;
-    align-items: start;
+  .footer-mark {
+    width: 100%;
+    height: auto;
+    fill: var(--ink);
+    transform-origin: 50% 100%;
   }
-  .footer-invite {
-    grid-column: 1 / 8;
-    display: grid;
-    justify-items: start;
-    gap: 32px;
-  }
-  .footer-invite h2 {
-    font-size: var(--step-big);
-    line-height: 0.98;
-    letter-spacing: -0.03em;
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px 32px;
   }
   .footer-links {
-    grid-column: 10 / 13;
-    display: grid;
-    justify-items: start;
-    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 24px;
   }
   .footer-links a {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    min-height: 32px;
+    min-height: 44px;
   }
   .footer-links svg {
     width: 18px;
     height: 18px;
   }
-  .footer-legal {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px 32px;
-    flex-wrap: wrap;
-    padding-bottom: 18px;
+  .footer-credits {
     font-size: var(--step-small);
-  }
-  .footer-mark {
-    width: 128%;
-    max-width: none;
-    height: auto;
-    fill: var(--ink);
-    margin-bottom: calc(var(--m) * -1);
-    transform: translateY(28%);
-    transform-origin: 0 100%;
   }
 
   /* ——— Tablet ——— */
@@ -875,15 +850,12 @@
       grid-column: 8 / span 5;
       margin-top: 18svh;
     }
-    .footer-invite {
+    .contact-intro {
       grid-column: 1 / -1;
     }
-    .footer-links {
+    .contact-list {
       grid-column: 1 / -1;
-      grid-auto-flow: column;
-      justify-content: start;
-      gap: 24px;
-      margin-top: 40px;
+      margin-top: 48px;
     }
   }
 
@@ -1013,34 +985,17 @@
     .about-moments li:nth-child(2) {
       justify-self: end;
     }
-    .contact-row {
-      min-height: 84px;
-      font-size: 9.6vw;
+    .contact-list > div {
+      grid-template-columns: 1fr;
+      gap: 2px;
+      padding: 14px 16px;
     }
-    .contact-row a {
-      font-size: 7.2vw;
-      font-stretch: 85%;
+    .contact-list dd {
+      font-size: 1.0625rem;
     }
-    .contact-row .email-link {
-      display: grid;
-    }
-    .contact-row .greet-link {
-      font-size: inherit;
-      font-stretch: 100%;
-    }
-    .footer-invite h2 {
-      font-size: 10.5vw;
-    }
-    .footer-invite .button {
-      width: 100%;
-      justify-content: space-between;
-    }
-    .footer-links {
-      grid-auto-flow: row;
-      grid-template-columns: 1fr 1fr;
-    }
-    .footer-mark {
-      width: 150%;
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 }
@@ -1115,10 +1070,7 @@
   }
   @keyframes footer-in {
     from {
-      transform: translateY(28%) scale(0.94);
-    }
-    to {
-      transform: translateY(28%) scale(1);
+      transform: scale(0.94);
     }
   }
 }

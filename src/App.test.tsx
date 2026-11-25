@@ -118,7 +118,7 @@ describe("Email clipboard", () => {
     fireEvent.click(screen.getByRole("button", { name: "Copy email address" }));
     await waitFor(() =>
       expect(screen.getByRole("status")).toHaveTextContent(
-        "You can select the email above.",
+        "You can select the email address.",
       ),
     );
     expect(screen.getByRole("link", { name: profile.email })).toHaveAttribute(
