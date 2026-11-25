@@ -2,12 +2,29 @@ import { useEffect, useRef, useState } from "react";
 import { profile } from "../data/portfolio";
 import { Icon } from "./Icon";
 
+const channels = [
+  { label: "Email", value: profile.email, href: `mailto:${profile.email}` },
+  { label: "GitHub", value: "github.com/TonyDuongg", href: profile.github },
+  {
+    label: "LinkedIn",
+    value: "linkedin.com/in/tonyduongg",
+    href: profile.linkedin,
+  },
+  {
+    label: "Facebook",
+    value: "facebook.com/haiduong205",
+    href: profile.facebook,
+  },
+  { label: "Based in", value: "Ho Chi Minh City, UTC+7" },
+];
+
 export function Contact() {
   const [copyState, setCopyState] = useState<"idle" | "copied" | "error">(
     "idle",
   );
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => () => clearTimeout(timer.current), []);
+
   async function copyEmail() {
     clearTimeout(timer.current);
     try {
@@ -18,85 +35,67 @@ export function Contact() {
     }
     timer.current = setTimeout(() => setCopyState("idle"), 4500);
   }
+
   return (
-    <footer
-      id="contact"
-      className="contact-section"
-      aria-labelledby="contact-heading"
-    >
-      <div className="container">
-        <div className="contact-main" data-reveal>
-          <h2 className="editorial-title" id="contact-heading">
-            Have something<em>in mind?</em>
-          </h2>
-          <div className="contact-copy">
-            <p>
-              Let’s talk about backend development,
-              <br className="desktop-break" /> a project, or a good idea.
-            </p>
-            <div className="contact-actions">
-              <a
-                href={`mailto:${profile.email}`}
-                className="button button-outline"
-              >
-                Say hello
-                <Icon name="arrow-up-right" />
-              </a>
-              <button
-                className="icon-button copy-button"
-                type="button"
-                onClick={() => void copyEmail()}
-                aria-label={
-                  copyState === "copied" ? "Email copied" : "Copy email address"
-                }
-                title="Copy email address"
-              >
-                <Icon name={copyState === "copied" ? "check" : "copy"} />
-              </button>
-            </div>
-            <a className="email-link" href={`mailto:${profile.email}`}>
-              {profile.email}
-            </a>
-            <p className="copy-status" role="status">
-              {copyState === "copied"
-                ? "Email copied. Talk soon!"
-                : copyState === "error"
-                  ? "Couldn’t copy automatically. You can select the email above."
-                  : ""}
-            </p>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <div>
-            <a className="brand footer-brand" href="#home">
-              tonyduong<span>.</span>
-            </a>
-            <p className="copyright">
-              © {new Date().getFullYear()} Nguyễn Hải Dương
-            </p>
-          </div>
-          <nav className="social-links" aria-label="Social links">
-            {(["github", "linkedin", "facebook"] as const).map(
-              (network, index) => (
-                <a
-                  key={network}
-                  href={profile[network]}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {["GitHub", "LinkedIn", "Facebook"][index]}
-                  <Icon name="arrow-up-right" />
-                  <span className="sr-only"> (opens a new tab)</span>
-                </a>
-              ),
-            )}
-          </nav>
-          <a className="back-to-top" href="#home">
-            Back to top
-            <Icon name="arrow-up" />
+    <section id="contact" className="contact" aria-labelledby="contact-heading">
+      <div className="contact-intro" data-reveal>
+        <h2 id="contact-heading">Get in touch</h2>
+        <p className="lead">
+          Write to me about a project, a backend problem or anything on this
+          page.
+        </p>
+        <div className="contact-actions">
+          <a className="button" href={`mailto:${profile.email}`}>
+            Say hello
+            <Icon name="arrow-up-right" />
           </a>
+          <button
+            className="copy-button"
+            type="button"
+            onClick={() => void copyEmail()}
+            aria-label={
+              copyState === "copied" ? "Email copied" : "Copy email address"
+            }
+          >
+            <Icon name={copyState === "copied" ? "check" : "copy"} />
+            <span aria-hidden="true">
+              {copyState === "copied" ? "Copied" : "Copy email"}
+            </span>
+          </button>
         </div>
+        <p className="copy-status" role="status">
+          {copyState === "copied"
+            ? "Email copied. Talk soon!"
+            : copyState === "error"
+              ? "Couldn’t copy automatically. You can select the email address."
+              : ""}
+        </p>
       </div>
-    </footer>
+
+      <dl className="contact-list" data-reveal>
+        {channels.map((channel) => (
+          <div key={channel.label}>
+            <dt>{channel.label}</dt>
+            <dd>
+              {channel.href ? (
+                <a
+                  href={channel.href}
+                  {...(channel.href.startsWith("http")
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                >
+                  {channel.value}
+                  {channel.href.startsWith("http") && (
+                    <span className="sr-only"> (opens a new tab)</span>
+                  )}
+                </a>
+              ) : (
+                channel.value
+              )}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </section>
   );
 }
