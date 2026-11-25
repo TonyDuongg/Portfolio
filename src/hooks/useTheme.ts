@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 
+export type Theme = "light" | "dark";
+
+/* Dark (the lit room of the avatar) is the default; light is the yellow of its lettering. */
 export function useTheme() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [theme, setTheme] = useState<Theme>("dark");
   useEffect(() => {
     setTheme(
-      document.documentElement.dataset.theme === "dark" ? "dark" : "light",
+      document.documentElement.dataset.theme === "light" ? "light" : "dark",
     );
   }, []);
 
   function toggleTheme() {
-    const next = theme === "light" ? "dark" : "light";
+    const next: Theme = theme === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = next;
-    document.documentElement.style.colorScheme = next;
     setTheme(next);
     try {
       localStorage.setItem("tonyd-theme", next);

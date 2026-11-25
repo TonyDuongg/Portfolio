@@ -1,55 +1,45 @@
+import { profile } from "../data/portfolio";
 import { Icon } from "./Icon";
+import { PixelName } from "./PixelName";
 
 export function Hero() {
   return (
-    <section
-      id="home"
-      className="hero container"
-      aria-labelledby="hero-heading"
-    >
-      <div className="hero-main">
-        <div className="hero-copy">
-          <h1 id="hero-heading">
-            <em>Thoughtful code.</em>
-            <span>Solid foundations.</span>
-          </h1>
-          <p className="hero-intro">
-            Hi, I’m Tony — a Java backend developer studying at FPT University.
-            I turn complex ideas into clear APIs and well-structured systems.
-          </p>
-          <div className="hero-actions">
-            <a href="#work" className="button button-primary">
-              Explore my work <Icon name="arrow-down-right" />
-            </a>
-            <a href="#contact" className="text-link accent">
-              Let’s talk <Icon name="arrow-up-right" />
-            </a>
-          </div>
-          <p className="hero-stack mono">Java / Spring Boot / SQL</p>
-        </div>
-        <figure className="portrait">
-          <img
-            src="./images/avatar.webp"
-            width="1024"
-            height="1024"
-            alt="Tony’s pixel-art avatar: an orange-hoodie developer at a warmly lit desk"
-            fetchPriority="high"
-          />
-          <figcaption>
-            <span className="portrait-name">Nguyễn Hải Dương</span>
-            <span className="portrait-location">
-              <Icon name="pin" />
-              Ho Chi Minh City, Vietnam
-            </span>
-          </figcaption>
-        </figure>
+    <section id="home" className="hero" aria-labelledby="hero-heading">
+      <div className="hero-intro" data-reveal>
+        <p className="lead">
+          Nguyễn Hải Dương. I build backends in Java and Spring Boot.
+        </p>
+        <a className="button" href="#work">
+          See the work
+          <Icon name="arrow-down" />
+        </a>
       </div>
-      <a href="#work" className="hero-foot">
-        <span>A little about what I build</span>
-        <span>
-          Scroll to explore <Icon name="arrow-down" />
-        </span>
-      </a>
+
+      <h1 id="hero-heading" className="monument">
+        <span className="sr-only">Tony Duong, Java backend developer</span>
+        <PixelName withAvatar className="monument-mark" />
+      </h1>
+
+      <img
+        className="hero-phone-portrait"
+        src="./images/avatar-portrait.webp"
+        width="800"
+        height="1000"
+        alt="Tony’s pixel-art self-portrait: orange hoodie, a desk, a monitor full of code"
+      />
+
+      <div className="hero-foot">
+        <p>Ho Chi Minh City · studying at FPT University</p>
+        <p className="hero-links">
+          <a href={profile.github} target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </a>
+          <a href={`mailto:${profile.email}`}>Email</a>
+        </p>
+      </div>
     </section>
   );
 }

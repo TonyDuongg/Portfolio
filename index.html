@@ -3,33 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f7f7f2" />
+    <meta name="theme-color" content="#2a0709" />
     <title>Tony Duong — Java Backend Developer</title>
     <meta
       name="description"
-      content="Nguyễn Hải Dương (Tony Duong), Java backend developer studying at FPT University. Java, Spring Boot, REST APIs, SQL, and a selection of public projects."
+      content="Nguyễn Hải Dương (Tony Duong), Java backend developer studying at FPT University in Ho Chi Minh City. Creator Studio on Spring Boot and AWS SQS, agent-redact on npm and PyPI, and a history game."
     />
     <link rel="canonical" href="https://tonyduongg.github.io/Portfolio/" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
-      content="Tony Duong — Thoughtful code. Solid foundations."
+      content="Tony Duong — Java backend developer"
     />
     <meta
       property="og:description"
-      content="Java backend development, public projects, and the details behind them. Meet Nguyễn Hải Dương, a software development student at FPT University."
+      content="Spring Boot services, a secret redactor for AI agents you can try in the page, and a history game. Nguyễn Hải Dương, FPT University, Ho Chi Minh City."
     />
     <meta property="og:url" content="https://tonyduongg.github.io/Portfolio/" />
     <meta
       property="og:image"
-      content="https://tonyduongg.github.io/Portfolio/images/portfolio-cover.webp"
+      content="https://tonyduongg.github.io/Portfolio/images/avatar.webp"
     />
     <meta
       property="og:image:alt"
-      content="Tony Duong portfolio illustrated cover"
+      content="Tony’s pixel-art self-portrait with the TONYD lettering"
     />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary" />
     <script>
       // Apply a saved preference before first paint; blocked storage is harmless.
       try {
@@ -37,9 +37,8 @@
         const theme =
           savedTheme === "dark" || savedTheme === "light"
             ? savedTheme
-            : "light";
+            : "dark";
         document.documentElement.dataset.theme = theme;
-        document.documentElement.style.colorScheme = theme;
       } catch {}
     </script>
     <script type="application/ld+json">
@@ -53,7 +52,7 @@
           "https://github.com/TonyDuongg",
           "https://www.linkedin.com/in/tonyduongg"
         ],
-        "knowsAbout": ["Java", "Spring Boot", "REST APIs", "SQL"],
+        "knowsAbout": ["Java", "Spring Boot", "PostgreSQL", "AWS SQS", "TypeScript"],
         "affiliation": {
           "@type": "CollegeOrUniversity",
           "name": "FPT University"
@@ -65,8 +64,8 @@
     <div id="root"><!--app-html--></div>
     <noscript
       ><p style="padding: 1rem; text-align: center">
-        All projects and contact links are below. Enable JavaScript to use
-        filters, case notes, and the theme switch.
+        All projects and contact links are below. Enable JavaScript to try the
+        redactor live and switch the theme.
       </p></noscript
     >
     <script type="module" src="/src/main.tsx"></script>

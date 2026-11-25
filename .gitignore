@@ -8,3 +8,5 @@ output/
 .env
 .env.*
 !.env.example
+.taste-skill/
+.playwright-mcp/

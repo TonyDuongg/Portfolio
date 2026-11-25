@@ -1,14 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot, hydrateRoot } from "react-dom/client";
-import "@fontsource/dm-sans/400.css";
-import "@fontsource/dm-sans/500.css";
-import "@fontsource/dm-sans/600.css";
-import "@fontsource/dm-sans/700.css";
-import "@fontsource/instrument-serif/400.css";
-import "@fontsource/instrument-serif/400-italic.css";
-import "@fontsource/lora/latin-500.css";
-import "@fontsource/lora/latin-ext-500.css";
-import "@fontsource/lora/vietnamese-500.css";
+import "@fontsource-variable/bricolage-grotesque/wdth.css";
 import "./styles/global.css";
 import App from "./App";
 

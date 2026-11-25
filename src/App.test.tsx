@@ -1,105 +1,94 @@
-import {
-  render,
-  screen,
-  within,
-  fireEvent,
-  waitFor,
-} from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import App from "./App";
 import { Contact } from "./components/Contact";
-import { filterProjects, profile, projects } from "./data/portfolio";
+import { profile, projects } from "./data/portfolio";
 
 describe("Portfolio content", () => {
-  it("keeps real repository links and a unique identity for each project", () => {
+  it("lists only real public repositories, each once", () => {
     expect(new Set(projects.map((project) => project.id)).size).toBe(
       projects.length,
     );
     projects.forEach((project) =>
-      expect(project.repository).toMatch(
-        /^https:\/\/github\.com\/TonyDuongg\//,
-      ),
+      project.links
+        .filter((link) => link.label === "Source")
+        .forEach((link) =>
+          expect(link.href).toMatch(/^https:\/\/github\.com\/TonyDuongg\//),
+        ),
     );
-    expect(filterProjects("all")).toHaveLength(3);
-    expect(filterProjects("web")).toHaveLength(2);
-    expect(filterProjects("automation")).toHaveLength(1);
   });
-  it("renders the Java backend identity and direct contact", () => {
+
+  it("names Tony and the backend focus on the first screen", () => {
     render(<App />);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      "Thoughtful code.Solid foundations.",
+      "Tony Duong, Java backend developer",
     );
-    expect(
-      screen.getByText(/Java backend developer studying/),
-    ).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Say hello" })).toHaveAttribute(
-      "href",
-      `mailto:${profile.email}`,
-    );
+    expect(screen.getByText(/I build backends in Java and Spring Boot/)).toBeVisible();
   });
-  it("filters projects and resets an open case note", async () => {
-    const user = userEvent.setup();
+
+  it("gives every section a heading", () => {
     render(<App />);
-    await user.click(
-      screen.getByRole("button", { name: /Case notes — Tiến Lên/ }),
-    );
-    expect(screen.getByText("The idea")).toBeVisible();
-    await user.click(screen.getByRole("button", { name: "Automation" }));
-    expect(screen.getAllByRole("article")).toHaveLength(1);
-    expect(
-      screen.queryByRole("heading", { name: "Personal portfolio" }),
-    ).not.toBeInTheDocument();
-    expect(screen.getByText("1 project shown")).toBeInTheDocument();
-    await user.click(screen.getByRole("button", { name: "All projects" }));
-    expect(screen.getAllByRole("article")).toHaveLength(3);
-    expect(
-      screen.getByRole("button", { name: /Case notes — Tiến Lên/ }),
-    ).toHaveAttribute("aria-expanded", "false");
+    for (const name of [
+      "Recent work",
+      "Paste a log. Keep your keys.",
+      "What I build with, and where it ran",
+      "Hải Dương",
+      "Get in touch",
+    ])
+      expect(screen.getByRole("heading", { level: 2, name })).toBeInTheDocument();
   });
-  it("opens and closes case notes with a semantic button", async () => {
+
+  it("links each project name to its destination", () => {
     render(<App />);
-    const button = screen.getByRole("button", { name: /Case notes — GitHub/ });
-    await userEvent.click(button);
-    expect(button).toHaveAttribute("aria-expanded", "true");
-    expect(screen.getByText("The data pipeline")).toBeVisible();
-    await userEvent.click(button);
-    expect(screen.getByText("The data pipeline")).not.toBeVisible();
+    projects.forEach((project) => {
+      const link = screen.getByRole("link", {
+        name: new RegExp(`^${project.name}\\s*\\(opens a new tab\\)$`),
+      });
+      expect(link).toHaveAttribute("href", project.href);
+    });
   });
+
   it("persists a theme change", async () => {
+    document.documentElement.dataset.theme = "dark";
     render(<App />);
-    await userEvent.click(
-      screen.getByRole("button", { name: "Switch to dark theme" }),
-    );
-    expect(document.documentElement.dataset.theme).toBe("dark");
-    expect(localStorage.getItem("tonyd-theme")).toBe("dark");
     await userEvent.click(
       screen.getByRole("button", { name: "Switch to light theme" }),
     );
     expect(document.documentElement.dataset.theme).toBe("light");
-  });
-  it("closes mobile navigation with Escape and returns focus", async () => {
-    render(<App />);
-    const toggle = screen.getByRole("button", { name: "Open navigation" });
-    await userEvent.click(toggle);
-    expect(toggle).toHaveAttribute("aria-expanded", "true");
-    fireEvent.keyDown(document, { key: "Escape" });
-    expect(toggle).toHaveAttribute("aria-expanded", "false");
-    expect(toggle).toHaveFocus();
-  });
-  it("closes mobile navigation after choosing a section", async () => {
-    render(<App />);
+    expect(localStorage.getItem("tonyd-theme")).toBe("light");
     await userEvent.click(
-      screen.getByRole("button", { name: "Open navigation" }),
+      screen.getByRole("button", { name: "Switch to dark theme" }),
     );
-    await userEvent.click(
-      within(
-        screen.getByRole("navigation", { name: "Main navigation" }),
-      ).getByText("Work"),
+    expect(document.documentElement.dataset.theme).toBe("dark");
+  });
+});
+
+describe("Live redactor", () => {
+  it("masks the sample secrets and reacts to new text", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    const section = screen.getByRole("region", {
+      name: "Paste a log. Keep your keys.",
+    });
+    const output = within(section).getByText("What the model receives")
+      .nextElementSibling as HTMLElement;
+    expect(output).not.toHaveTextContent("hunter2");
+    expect(within(section).getByRole("status")).toHaveTextContent(
+      /\d+ secrets masked\./,
     );
-    expect(
-      screen.getByRole("button", { name: "Open navigation" }),
-    ).toHaveAttribute("aria-expanded", "false");
+
+    const box = within(section).getByLabelText("Your text");
+    await user.click(within(section).getByRole("button", { name: "Clear" }));
+    expect(box).toHaveValue("");
+    expect(within(section).getByRole("status")).toHaveTextContent(
+      "Nothing to mask.",
+    );
+    await user.type(box, "mail me at someone@example.org");
+    expect(output).toHaveTextContent("[REDACTED_EMAIL_ADDRESS]");
+    expect(within(section).getByRole("status")).toHaveTextContent(
+      "1 secret masked.",
+    );
   });
 });
 
@@ -119,6 +108,7 @@ describe("Email clipboard", () => {
     );
     expect(writeText).toHaveBeenCalledWith(profile.email);
   });
+
   it("offers a usable fallback when the clipboard is blocked", async () => {
     Object.defineProperty(navigator, "clipboard", {
       configurable: true,
@@ -132,6 +122,10 @@ describe("Email clipboard", () => {
       ),
     );
     expect(screen.getByRole("link", { name: profile.email })).toHaveAttribute(
+      "href",
+      `mailto:${profile.email}`,
+    );
+    expect(screen.getByRole("link", { name: /Say hello/ })).toHaveAttribute(
       "href",
       `mailto:${profile.email}`,
     );

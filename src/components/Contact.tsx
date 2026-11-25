@@ -8,6 +8,7 @@ export function Contact() {
   );
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => () => clearTimeout(timer.current), []);
+
   async function copyEmail() {
     clearTimeout(timer.current);
     try {
@@ -18,85 +19,62 @@ export function Contact() {
     }
     timer.current = setTimeout(() => setCopyState("idle"), 4500);
   }
+
+  const [user, domain] = profile.email.split("@");
+
   return (
-    <footer
-      id="contact"
-      className="contact-section"
-      aria-labelledby="contact-heading"
-    >
-      <div className="container">
-        <div className="contact-main" data-reveal>
-          <h2 className="editorial-title" id="contact-heading">
-            Have something<em>in mind?</em>
-          </h2>
-          <div className="contact-copy">
-            <p>
-              Let’s talk about backend development,
-              <br className="desktop-break" /> a project, or a good idea.
-            </p>
-            <div className="contact-actions">
-              <a
-                href={`mailto:${profile.email}`}
-                className="button button-outline"
-              >
-                Say hello
-                <Icon name="arrow-up-right" />
-              </a>
-              <button
-                className="icon-button copy-button"
-                type="button"
-                onClick={() => void copyEmail()}
-                aria-label={
-                  copyState === "copied" ? "Email copied" : "Copy email address"
-                }
-                title="Copy email address"
-              >
-                <Icon name={copyState === "copied" ? "check" : "copy"} />
-              </button>
-            </div>
-            <a className="email-link" href={`mailto:${profile.email}`}>
-              {profile.email}
-            </a>
-            <p className="copy-status" role="status">
-              {copyState === "copied"
-                ? "Email copied. Talk soon!"
-                : copyState === "error"
-                  ? "Couldn’t copy automatically. You can select the email above."
-                  : ""}
-            </p>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <div>
-            <a className="brand footer-brand" href="#home">
-              tonyduong<span>.</span>
-            </a>
-            <p className="copyright">
-              © {new Date().getFullYear()} Nguyễn Hải Dương
-            </p>
-          </div>
-          <nav className="social-links" aria-label="Social links">
-            {(["github", "linkedin", "facebook"] as const).map(
-              (network, index) => (
-                <a
-                  key={network}
-                  href={profile[network]}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {["GitHub", "LinkedIn", "Facebook"][index]}
-                  <Icon name="arrow-up-right" />
-                  <span className="sr-only"> (opens a new tab)</span>
-                </a>
-              ),
-            )}
-          </nav>
-          <a className="back-to-top" href="#home">
-            Back to top
-            <Icon name="arrow-up" />
-          </a>
-        </div>
+    <section id="contact" className="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading" className="contact-row">
+        Get in touch
+      </h2>
+      <p className="contact-row">
+        <a className="email-link" href={`mailto:${profile.email}`}>
+          <span>{user}</span>
+          <wbr />
+          <span>@{domain}</span>
+        </a>
+      </p>
+      <p className="contact-row">
+        <a href={profile.github} target="_blank" rel="noopener noreferrer">
+          github.com/TonyDuongg
+          <span className="sr-only"> (opens a new tab)</span>
+        </a>
+      </p>
+      <p className="contact-row">
+        <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+          linkedin.com/in/tonyduongg
+          <span className="sr-only"> (opens a new tab)</span>
+        </a>
+      </p>
+      <p className="contact-row">Ho Chi Minh City, UTC+7</p>
+      <div className="contact-row contact-greet">
+        <a className="greet-link" href={`mailto:${profile.email}`}>
+          Say hello
+          <span className="round-button" aria-hidden="true">
+            <Icon name="arrow-up-right" />
+          </span>
+        </a>
+        <button
+          className="copy-button"
+          type="button"
+          onClick={() => void copyEmail()}
+          aria-label={
+            copyState === "copied" ? "Email copied" : "Copy email address"
+          }
+        >
+          <Icon name={copyState === "copied" ? "check" : "copy"} />
+          <span aria-hidden="true">
+            {copyState === "copied" ? "Copied" : "Copy email"}
+          </span>
+        </button>
+        <p className="copy-status" role="status">
+          {copyState === "copied"
+            ? "Email copied. Talk soon!"
+            : copyState === "error"
+              ? "Couldn’t copy automatically. You can select the email above."
+              : ""}
+        </p>
       </div>
-    </footer>
+    </section>
   );
 }
