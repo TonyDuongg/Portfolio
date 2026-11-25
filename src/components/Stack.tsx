@@ -11,7 +11,8 @@ export function Stack() {
         <figure className="stack-figure" data-reveal>
           <p className="stack-number">{lead.share}%</p>
           <figcaption>
-            of the code in my public repositories is {lead.name}.{" "}
+            of the code across my repositories, public and private, is{" "}
+            {lead.name}.{" "}
             {rest.map((item) => `${item.name} ${item.share}`).join(", ")}.
             Counted every day by my profile updater.
           </figcaption>
