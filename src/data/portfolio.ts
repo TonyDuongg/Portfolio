@@ -107,7 +107,7 @@ export const stack: { kind: string; tool: string; where: string }[] = [
   { kind: "Automation", tool: "GitHub Actions, Python", where: "Profile updater" },
   { kind: "Interface", tool: "React, Vite", where: "Creator Studio, this site" },
   { kind: "Browser", tool: "JavaScript, Canvas", where: "Tiến Lên" },
-  { kind: "Learning", tool: "Docker in production, Next.js", where: "Next" },
+  { kind: "Learning", tool: "AWS architecture, Next.js", where: "Next" },
 ];
 
 /* From top-langs.svg, drawn by the profile workflow on 2026-11-25. */

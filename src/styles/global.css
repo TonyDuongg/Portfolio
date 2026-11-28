@@ -57,20 +57,19 @@
 
 @layer base {
   /*
-   * Colours come from Tony's own pixel avatar and his Tiến Lên game:
-   * the dark red of the lit room, the yellow of the TONYD letters.
+   * A quiet paper palette: ivory ground, charcoal ink, one moss green for
+   * actions. The pixel avatar brings the only warm colour on the page.
    */
   :root {
-    color-scheme: dark;
-    --bg: #2a0709;
-    --surface: #380c0f;
-    --surface-2: #461115;
-    --ink: #ffcd38;
-    --muted: #cfa84a;
-    --inv-bg: #ffcd38;
-    --inv-surface: #f2bd22;
-    --inv-ink: #2a0709;
-    --inv-muted: #7a2a12;
+    color-scheme: light;
+    --bg: #f7f6f3;
+    --surface: #efede8;
+    --surface-2: #e7e4dd;
+    --ink: #1f2328;
+    --muted: #5c6166;
+    --accent: #3f6b4f;
+    --accent-ink: #ffffff;
+    --accent-soft: #dce7df;
 
     --font: "Bricolage Grotesque Variable", "Bricolage Grotesque",
       "Segoe UI", system-ui, sans-serif;
@@ -86,17 +85,16 @@
     --gap-section: clamp(120px, 14vw, 200px);
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
   }
-  :root[data-theme="light"] {
-    color-scheme: light;
-    --bg: #ffcd38;
-    --surface: #f5c12a;
-    --surface-2: #eab51b;
-    --ink: #2a0709;
-    --muted: #7a2a12;
-    --inv-bg: #2a0709;
-    --inv-surface: #380c0f;
-    --inv-ink: #ffcd38;
-    --inv-muted: #cfa84a;
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #17181b;
+    --surface: #1f2125;
+    --surface-2: #272a2f;
+    --ink: #e8e6e1;
+    --muted: #a2a5a9;
+    --accent: #8fbf9f;
+    --accent-ink: #17181b;
+    --accent-soft: #2a3a30;
   }
 
   html {
@@ -111,11 +109,11 @@
     overflow-x: clip;
   }
   ::selection {
-    background: var(--ink);
-    color: var(--bg);
+    background: var(--accent-soft);
+    color: var(--ink);
   }
   :focus-visible {
-    outline: 3px solid var(--ink);
+    outline: 3px solid var(--accent);
     outline-offset: 4px;
   }
   h1,
@@ -174,8 +172,8 @@
     gap: 14px;
     min-height: 52px;
     padding: 0 22px;
-    background: var(--ink);
-    color: var(--bg);
+    background: var(--accent);
+    color: var(--accent-ink);
     font-weight: 600;
     text-decoration: none;
     transition:
@@ -504,8 +502,8 @@
     overflow-wrap: anywhere;
   }
   .redact mark {
-    background: var(--ink);
-    color: var(--bg);
+    background: var(--accent-soft);
+    color: var(--ink);
     padding: 0 2px;
   }
   .redact-actions {
@@ -749,20 +747,16 @@
 
   /* ——— Footer: the name, whole, closes the page ——— */
   .site-footer {
-    --bg: var(--inv-bg);
-    --ink: var(--inv-ink);
-    --muted: var(--inv-muted);
-    --surface: var(--inv-surface);
     display: grid;
     gap: 36px;
     padding: clamp(56px, 7vw, 104px) var(--m) 28px;
-    background: var(--bg);
+    background: var(--surface);
     color: var(--ink);
   }
   .footer-mark {
     width: 100%;
     height: auto;
-    fill: var(--ink);
+    fill: var(--accent);
     transform-origin: 50% 100%;
   }
   .footer-bottom {

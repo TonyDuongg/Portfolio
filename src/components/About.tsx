@@ -4,7 +4,7 @@ const moments = [
     alt: "Tony’s pixel-art self-portrait at a warmly lit desk",
     name: "The desk",
     role: "Self-portrait, in pixels",
-    text: "Hải Dương means ocean. Most people call me Tony. This is me at my desk, and the yellow letters across this page are taken from it.",
+    text: "Hải Dương means ocean. Most people call me Tony. This is me at my desk, and the TONYD letters across this page are taken from it.",
   },
   {
     src: "./images/fpt-hcmc.webp",
