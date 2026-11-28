@@ -6,7 +6,7 @@ afterEach(() => {
   cleanup();
   vi.restoreAllMocks();
   localStorage.clear();
-  document.documentElement.dataset.theme = "dark";
+  document.documentElement.dataset.theme = "light";
 });
 Object.defineProperty(window, "matchMedia", {
   writable: true,

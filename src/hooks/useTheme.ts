@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 
 export type Theme = "light" | "dark";
 
-/* Dark (the lit room of the avatar) is the default; light is the yellow of its lettering. */
+/* Light paper is the default; dark is a soft charcoal for people who prefer it. */
 export function useTheme() {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
   useEffect(() => {
     setTheme(
-      document.documentElement.dataset.theme === "light" ? "light" : "dark",
+      document.documentElement.dataset.theme === "dark" ? "dark" : "light",
     );
   }, []);
 

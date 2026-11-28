@@ -65,7 +65,8 @@ Sửa `src/data/portfolio.ts` để thay dự án, stack và liên hệ. Sửa `
 tiếng Anh.
 
 Thiết kế (11/2026): chữ TONYD pixel lấy từ avatar làm "tượng đài" toàn chiều ngang,
-avatar thay chữ O; màu nền đỏ thẫm + chữ vàng lấy từ avatar và game Tiến Lên. Không
+avatar thay chữ O. Màu (11/2026, bản dịu): nền giấy ngà #f7f6f3, chữ xám than #1f2328,
+một màu nhấn xanh rêu #3f6b4f; nút đổi sang bản tối dịu. Không
 nhãn eyebrow, không số thứ tự 01/02, không đường kẻ mảnh, không gradient, không bóng.
 
 Chỉ trình bày repo công khai có thật (đối chiếu ngày 25/11/2026). Số lượt tải npm
